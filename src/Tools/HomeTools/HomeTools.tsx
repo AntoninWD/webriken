@@ -70,7 +70,7 @@ const HomeTools: React.FC = () => {
       </div>
 
       <div className='container home tools'>
-        <h4>Let us Know which tools you would like in the future!</h4>
+        <h4>Let us know which tools you would like in the future!</h4>
         <div>
           <form action='submit'>
             <input type='text' placeholder='Tell us what you want!' />
