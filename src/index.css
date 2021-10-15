@@ -1,13 +1,305 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap");
+
+/*
+=============== 
+Variables
+===============
+*/
+
+:root {
+  --clr-bcg: #fff;
+  --clr-bcg-second: hsl(0, 0%, 98%);
+  --clr-bcg-third: hsla(32, 100%, 69%, 0.157);
+  --clr-font: hsl(209, 44%, 23%);
+  --clr-font-input: hsl(209, 74%, 21%);
+  --clr-font-second: hsl(208, 34%, 75%);
+  --clr-font-third: hsl(209, 46%, 84%);
+  --clr-primary: #e44e02;
+  --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+  /* dark shades of primary color*/
+  --clr-primary-1: #e44e02;
+  --clr-primary-2: #ee6a05;
+  --clr-primary-3: #f58505;
+  --clr-primary-4: #fea406;
+  /* other to color  match with primary color */
+  --clr-secondary-1: #e23e2b;
+  --clr-secondary-2: #d42512;
+  --clr-secondary-3: #aa1622;
+  --clr-secondary-4: #770833;
+  --clr-secondary-5: #6d0535;
+  /* darkest grey - used for headings */
+  --clr-grey-1: hsl(209, 61%, 16%);
+  --clr-grey-2: hsl(211, 39%, 23%);
+  --clr-grey-3: hsl(209, 34%, 30%);
+  --clr-grey-4: hsl(209, 28%, 39%);
+  /* grey used for paragraphs */
+  --clr-grey-5: hsl(210, 22%, 49%);
+  --clr-grey-6: hsl(209, 23%, 60%);
+  --clr-grey-7: hsl(211, 27%, 70%);
+  --clr-grey-8: hsl(210, 31%, 80%);
+  --clr-grey-9: hsl(212, 33%, 89%);
+  --clr-grey-10: hsl(210, 36%, 96%);
+  --clr-white: #fff;
+  --clr-black: #222;
+  /* status colors*/
+  --clr-active: #4fc56d;
+  --clr-busy: #e65050;
+  --clr-break: #ec761c;
+  --clr-offline: #7c7876;
+  /* other vars*/
+  --transition: all 0.2s ease;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --phone: 600px;
+  --tablet: 900px;
+  --max-width: 1200px;
+  --fixed-width: 620px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.dark-theme {
+  --clr-bcg: hsl(209, 61%, 16%);
+  --clr-bcg-second: hsl(210, 45%, 21%);
+  --clr-bcg-third: hsla(32, 100%, 69%, 0.157);
+  --clr-font: rgb(240, 240, 240);
+  --clr-font-input: rgb(230, 230, 230);
+  --clr-font-second: hsl(210, 23%, 47%);
+  --clr-font-third: hsl(210, 23%, 47%);
+  --clr-primary: #f58505;
+}
+.light-theme {
+  --clr-bcg: #fff;
+  --clr-bcg-second: hsl(0, 0%, 98%);
+  --clr-bcg-third: hsla(32, 100%, 69%, 0.157);
+  --clr-font: hsl(209, 74%, 21%);
+  --clr-font-input: hsl(209, 74%, 21%);
+  --clr-font-second: hsl(208, 34%, 75%);
+  --clr-font-third: hsl(209, 46%, 84%);
+  --clr-primary: #e44e02;
+  --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+/*
+=============== 
+Global Styles
+===============
+*/
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  background: var(--clr-white);
+  color: var(--clr-grey-1);
+  line-height: 1.5;
+  font-size: 0.875rem;
+}
+ul {
+  list-style-type: none;
+}
+
+input:focus {
+  outline: none;
+}
+a {
+  text-decoration: none;
+}
+hr {
+  border: none;
+  border-top: 1px solid var(--clr-grey-8);
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  letter-spacing: var(--spacing);
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+h4 {
+  font-size: 1.25rem;
+}
+h5 {
+  font-size: 0.875rem;
+}
+p {
+  margin-bottom: 1.25rem;
+  color: var(--clr-grey-3);
+}
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  h4 {
+    font-size: 1.5rem;
+  }
+  h5 {
+    font-size: 1rem;
+  }
+  body {
+    font-size: 1rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1;
+  }
+}
+
+/*  global classes */
+
+.section-center {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: var(--max-width);
+}
+
+.btn {
+  font: unset;
+  font-family: "Source Sans Pro", sans-serif;
+  cursor: pointer;
+  border: none;
+  padding: 13px;
+  border-radius: 5px;
+  display: inline-block;
+  color: var(--clr-primary-2);
+  font-weight: 600;
+  transition: var(--transition);
+  background-color: white;
+  box-shadow: rgba(236, 161, 99, 0.52) 0px 5px 10px;
+  z-index: 2;
+  text-transform: capitalize;
+}
+
+.btn-app {
+  display: flex;
+  align-items: center;
+  font: unset;
+  font-family: "Source Sans Pro", sans-serif;
+  cursor: pointer;
+  border: none;
+  padding: 5px 22px;
+  margin: 10px 0;
+  border-radius: 5px;
+  width: 90%;
+  color: var(--clr-font);
+  font-weight: 600;
+  transition: var(--transition);
+}
+.btn-app:hover {
+  color: var(--clr-primary-4);
+  background-color: var(--clr-bcg-third);
+}
+.btn-app :focus {
+  color: var(--clr-primary-4);
+  background-color: var(--clr-bcg-third);
+}
+.active {
+  color: var(--clr-primary-4) !important;
+  background-color: var(--clr-bcg-third) !important;
+}
+
+.bar {
+  width: 90%;
+  opacity: 0.3;
+}
+
+.remove-tool {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font: unset;
+  font-family: "Source Sans Pro", sans-serif;
+  cursor: pointer;
+  border: none;
+  padding: 5px 10px;
+  margin: 10px;
+  border-radius: 5px;
+  color: var(--clr-white);
+  background-color: var(--clr-secondary-3) !important;
+  font-weight: 600;
+  transition: var(--transition);
+  font-size: 0.8rem;
+  box-shadow: var(--shadow);
+}
+.remove-tool:hover {
+  background-color: #d81c1c !important;
+}
+
+.container {
+  border: 2px solid var(--clr-grey-7);
+  margin: 0 10% 10rem 10%;
+  border-radius: 5px;
+  background-color: var(--clr-bcg);
+  padding: 1rem;
+  height: 75vh;
+  box-shadow: var(--shadow);
+  @media screen and (max-width: 1400px) {
+    margin: 0 3% 10rem 3%;
+  }
+}
+
+.lds-hourglass {
+  display: inline-block;
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  width: 80px;
+  height: 80px;
+}
+.lds-hourglass:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 8px;
+  box-sizing: border-box;
+  border: 32px solid hsl(211, 39%, 23%);
+  border-color: hsl(211, 39%, 23%) transparent hsl(211, 39%, 23%) transparent;
+  animation: lds-hourglass 1.2s infinite;
+}
+@keyframes lds-hourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
+}
+.tools-wrapper {
+  position: absolute;
+  top: 67px;
+  right: 0;
+  width: calc(100vw - 230px);
+  height: calc(100vh - 67px);
+  background-color: var(--clr-bcg-second);
+  transition: var(--transition);
+  color: var(--clr-font);
 }
