@@ -50,6 +50,7 @@ const Wrapper = styled.div`
   position: relative;
   margin-top: 5rem;
   height: calc(100vh - 10rem);
+
   @media screen and (max-width: 900px) {
     justify-content: center;
   }
