@@ -209,15 +209,15 @@ p {
 }
 .btn-app:hover {
   color: var(--clr-primary-4);
-  background-color: var(--clr-bcg-third);
+  background-color: var(--clr-grey-10);
 }
 .btn-app :focus {
   color: var(--clr-primary-4);
-  background-color: var(--clr-bcg-third);
+  background-color: var(--clr-grey-10);
 }
 .active {
   color: var(--clr-primary-4) !important;
-  background-color: var(--clr-bcg-third) !important;
+  background-color: var(--clr-grey-10) !important;
 }
 
 .bar {
@@ -227,20 +227,20 @@ p {
 
 .remove-tool {
   position: absolute;
-  right: 0;
-  bottom: 0;
+  right: -5px;
+  top: 0;
   font: unset;
   font-family: "Source Sans Pro", sans-serif;
   cursor: pointer;
   border: none;
-  padding: 5px 10px;
-  margin: 10px;
+  padding: 2px 5px;
+  margin: 8px;
   border-radius: 5px;
   color: var(--clr-white);
   background-color: var(--clr-secondary-3) !important;
   font-weight: 600;
   transition: var(--transition);
-  font-size: 0.8rem;
+  font-size: 0.5rem;
   box-shadow: var(--shadow);
 }
 .remove-tool:hover {
@@ -253,7 +253,7 @@ p {
   border-radius: 5px;
   background-color: var(--clr-bcg);
   padding: 1rem;
-  height: 75vh;
+  height: fit-content;
   box-shadow: var(--shadow);
   @media screen and (max-width: 1400px) {
     margin: 0 3% 10rem 3%;
@@ -302,4 +302,19 @@ p {
   background-color: var(--clr-bcg-second);
   transition: var(--transition);
   color: var(--clr-font);
+  overflow-y: scroll;
+}
+.tools-wrapper ::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+.tools-wrapper::-webkit-scrollbar {
+  width: 14px;
+  background-color: transparent;
+}
+
+.tools-wrapper::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: var(--clr-grey-9);
 }

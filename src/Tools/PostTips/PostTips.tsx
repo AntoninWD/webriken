@@ -235,7 +235,7 @@ const PostTips: React.FC = () => {
           setMain("home");
           mainTools[0].active = true;
         }}>
-        Remove this tool
+        Remove tool
       </Link>
     </Wrapper>
   );

@@ -43,7 +43,7 @@ const PostTipsSideBar: React.FC<Props> = ({
 
   const addTopics = (t: string | undefined) => {
     if (!t) return;
-    if (currentTopicList.length === 12) return;
+    if (currentTopicList.length >= 12) return;
     currentTopicListHandler(t);
     currentTopicHandler(t);
     currentTopicIdHandler(0);
@@ -67,7 +67,7 @@ const PostTipsSideBar: React.FC<Props> = ({
         </button>
       </form>
       <hr className='bar' />
-      <div>
+      <div className='topic-list'>
         {currentTopicList.map((e, i) => {
           return (
             <div className='list' key={i}>
@@ -137,6 +137,27 @@ const Wrapper = styled.div`
     :hover {
       background-color: var(--clr-grey-3);
       border: none;
+    }
+  }
+  .topic-list {
+    height: 90%;
+    overflow-y: scroll;
+    @media only screen and (max-height: 800px) {
+      height: 84%;
+    }
+    ::-webkit-scrollbar-track {
+      border-radius: 10px;
+      background-color: transparent;
+    }
+
+    ::-webkit-scrollbar {
+      width: 14px;
+      background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background: var(--clr-grey-9);
     }
   }
   .list {

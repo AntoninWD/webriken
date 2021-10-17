@@ -109,17 +109,9 @@ const Wrapper = styled.div`
       font-size: 15px;
     }
   }
-
   .container {
-    border: 2px solid var(--clr-grey-7);
-    margin: 0 10% 10rem 10%;
-    border-radius: 5px;
-    background-color: var(--clr-bcg);
-    padding: 1rem;
-    height: 75vh;
-    box-shadow: rgba(58, 58, 58, 0.383) 0px 5px 10px;
-    @media screen and (max-width: 1400px) {
-      margin: 0 3% 10rem 3%;
+    @media only screen and (max-width: 1100px) {
+      margin: 0 5% 10rem 5%;
     }
   }
   .features-btn {
@@ -134,7 +126,7 @@ const Wrapper = styled.div`
     font-weight: 600;
     transition: var(--transition);
     text-transform: capitalize;
-    @media only screen and (max-width: 1200px) {
+    @media only screen and (max-width: 1350px) {
       font-size: 0.8rem;
       padding: 15px 3rem;
     }

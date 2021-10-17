@@ -5,7 +5,7 @@ import Pomodoro from "./Pomodoro";
 import Schedule from "./Schedule";
 const TopTools: React.FC = () => {
   return (
-    <Wrapper>
+    <Wrapper className='tools-wrapper'>
       <h2>Top Tools</h2>
       <div className='container'>
         <div>
@@ -44,14 +44,6 @@ const TopTools: React.FC = () => {
   );
 };
 const Wrapper = styled.div`
-  position: absolute;
-  top: 67px;
-  right: 0;
-  width: calc(100vw - 230px);
-  height: calc(100vh - 67px);
-  background-color: var(--clr-bcg-second);
-  transition: var(--transition);
-  color: var(--clr-font);
   @media only screen and (max-width: 900px) {
     display: none;
   }

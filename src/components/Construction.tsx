@@ -18,14 +18,15 @@ const Construction: React.FC = () => {
 
 const Wrapper = styled.div`
   img {
-    width: 500px;
-    height: 500px;
+    width: 400px;
+    height: 400px;
   }
   .container {
     padding: 5rem;
     display: flex;
     align-items: center;
     flex-direction: column;
+    height: fit-content;
   }
   p {
     font-size: 2rem;

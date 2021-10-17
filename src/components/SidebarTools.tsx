@@ -72,7 +72,6 @@ const SidebarTools: React.FC = () => {
           );
         })}
       </div>
-      <hr className='bar bottom-bar' />
     </Wrapper>
   );
 };
@@ -81,6 +80,23 @@ const Wrapper = styled.div`
   margin-left: 1rem;
   grid-area: tools;
   position: relative;
+
+  @media only screen and (max-height: 700px) {
+    overflow-y: scroll;
+    ::-webkit-scrollbar-track {
+      border-radius: 10px;
+      background-color: transparent;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      background-color: var(--clr-grey-9);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background: var(--clr-grey-6);
+    }
+  }
   .addToolBtn {
     position: relative;
     margin-left: 40px;
@@ -105,11 +121,6 @@ const Wrapper = styled.div`
 
   .tools {
     margin: 22px 0;
-    height: 78%;
-  }
-  .bottom-bar {
-    position: absolute;
-    bottom: 0;
   }
 `;
 export default SidebarTools;

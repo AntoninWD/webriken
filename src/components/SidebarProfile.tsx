@@ -17,6 +17,7 @@ const SidebarProfile: React.FC = () => {
   const isUser = isAuthenticated && user;
   return (
     <Wrapper>
+      <hr className='bar top-bar' />
       <Profile
         setStatus={setStatus}
         profileModal={profileModal}
@@ -132,6 +133,10 @@ const Wrapper = styled.div`
   .offline {
     background-color: var(--clr-offline);
     border: 3px solid var(--clr-offline);
+  }
+  .top-bar {
+    position: absolute;
+    top: 0;
   }
 `;
 export default SidebarProfile;
