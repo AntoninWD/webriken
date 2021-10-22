@@ -13,7 +13,7 @@ const CurrentTask: React.FC = () => {
     e.preventDefault();
   };
 
-  const addList = (t: string | undefined) => {
+  const addList = (t: string) => {
     if (!t) return;
     setCurrentTaskList([...currentTaskList, t]);
   };
@@ -35,10 +35,8 @@ const CurrentTask: React.FC = () => {
           type='submit'
           className='plus-button'
           onClick={() => {
-            addList(task.current?.value);
-            if (task.current) {
-              task.current.value = "";
-            }
+            if (task.current) addList(task.current.value);
+            if (task.current) task.current.value = "";
           }}>
           +
         </button>

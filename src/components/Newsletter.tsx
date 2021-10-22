@@ -12,7 +12,7 @@ const Newsletter: React.FC = () => {
           <h1>Sign up to our newsletter</h1>
           <form action='submit'>
             <input type='email' placeholder='Enter your email address' />
-            <button type='submit'>Sign up</button>
+            <button>Sign up</button>
           </form>
         </div>
       </div>
@@ -62,6 +62,11 @@ const Wrapper = styled.div`
       @media screen and (max-width: 900px) {
         margin-top: 2rem;
         margin-left: 0;
+      }
+      @media screen and (max-width: 450px) {
+        float: right;
+        margin-top: 5px;
+        margin-right: 2.5rem;
       }
       :hover {
         background-color: var(--clr-secondary-2);

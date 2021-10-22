@@ -269,18 +269,16 @@ const Wrapper = styled.div`
     font-weight: 400;
   }
 
-  img {
-    height: 250px;
-    width: 250px;
-  }
-
   .add-notes {
     text-align: center;
     margin-top: 10rem;
     position: absolute;
+    @media only screen and (max-height: 700px) {
+      margin-top: 5rem;
+    }
     img {
-      height: 200px;
-      width: 200px;
+      height: 250px;
+      width: 250px;
     }
     h2 {
       @media only screen and (max-width: 1100px) {

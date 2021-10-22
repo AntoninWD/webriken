@@ -10,6 +10,7 @@ Variables
   --clr-bcg: #fff;
   --clr-bcg-second: hsl(0, 0%, 98%);
   --clr-bcg-third: hsla(32, 100%, 69%, 0.157);
+  --btn-bcg: hsl(210, 36%, 96%);
   --clr-font: hsl(209, 44%, 23%);
   --clr-font-input: hsl(209, 74%, 21%);
   --clr-font-second: hsl(208, 34%, 75%);
@@ -61,6 +62,7 @@ Variables
   --clr-bcg: hsl(209, 61%, 16%);
   --clr-bcg-second: hsl(210, 45%, 21%);
   --clr-bcg-third: hsla(32, 100%, 69%, 0.157);
+  --btn-bcg: hsl(207, 24%, 37%);
   --clr-font: rgb(240, 240, 240);
   --clr-font-input: rgb(230, 230, 230);
   --clr-font-second: hsl(210, 23%, 47%);
@@ -71,6 +73,7 @@ Variables
   --clr-bcg: #fff;
   --clr-bcg-second: hsl(0, 0%, 98%);
   --clr-bcg-third: hsla(32, 100%, 69%, 0.157);
+  --btn-bcg: hsl(210, 36%, 96%);
   --clr-font: hsl(209, 74%, 21%);
   --clr-font-input: hsl(209, 74%, 21%);
   --clr-font-second: hsl(208, 34%, 75%);
@@ -209,15 +212,15 @@ p {
 }
 .btn-app:hover {
   color: var(--clr-primary-4);
-  background-color: var(--clr-grey-10);
+  background-color: var(--btn-bcg);
 }
 .btn-app :focus {
   color: var(--clr-primary-4);
-  background-color: var(--clr-grey-10);
+  background-color: var(--btn-bcg);
 }
 .active {
   color: var(--clr-primary-4) !important;
-  background-color: var(--clr-grey-10) !important;
+  background-color: var(--btn-bcg) !important;
 }
 
 .bar {

@@ -49,11 +49,9 @@ const TopbarSchedule: React.FC = () => {
     }
   }, [status, schedule]);
 
-  if (schedule) {
-    setInterval(() => {
-      getCurrentTime();
-    }, 60000);
-  }
+  setInterval(() => {
+    getCurrentTime();
+  }, 60000);
 
   return (
     <Wrapper>

@@ -32,7 +32,7 @@ const Lists: React.FC<Props> = ({
       <div className='headers'>
         <h5>Task</h5>
         <h5>End Date</h5>
-        <h5>Status</h5>
+        <h5 className='headers-status'>Status</h5>
         <h5>Priority</h5>
       </div>
 
@@ -90,10 +90,17 @@ const Wrapper = styled.div`
   img {
     height: 250px;
     width: 250px;
+    @media only screen and (max-height: 750px) {
+      height: 150px;
+      width: 150px;
+    }
   }
   .add-task {
     text-align: center;
     margin-top: 10rem;
+    @media only screen and (max-height: 750px) {
+      margin-top: 5rem;
+    }
   }
   h2 {
     margin-top: 2rem;
@@ -122,6 +129,12 @@ const Wrapper = styled.div`
     align-items: center;
     justify-items: center;
     margin: 2rem 3%;
+  }
+
+  .headers-status {
+    @media only screen and (max-width: 1050px) {
+      margin-right: 7px;
+    }
   }
   .task {
     display: grid;
