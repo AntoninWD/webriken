@@ -30,9 +30,6 @@ const TopbarSchedule: React.FC = () => {
     }
 
     formValues.forEach(({ title, startValue, endValue }) => {
-      if (title === "Working") {
-        setStatus("Inactive");
-      }
       if (currentTime >= startValue && currentTime <= endValue) {
         setStatus(title);
         setSchedule(true);

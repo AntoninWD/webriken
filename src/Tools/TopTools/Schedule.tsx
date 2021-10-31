@@ -14,7 +14,7 @@ const Schedule: React.FC = () => {
       endValue: "0",
     },
     {
-      title: "First break",
+      title: "Break",
       startRef: useRef<HTMLInputElement>(null),
       startValue: "0",
       endRef: useRef<HTMLInputElement>(null),
@@ -28,7 +28,7 @@ const Schedule: React.FC = () => {
       endValue: "0",
     },
     {
-      title: "Second Break",
+      title: "Break",
       startRef: useRef<HTMLInputElement>(null),
       startValue: "0",
       endRef: useRef<HTMLInputElement>(null),
