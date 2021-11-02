@@ -25,53 +25,43 @@ function App() {
           </Route>
           <PrivateRoute exact path='/app/home'>
             <Redirect to='/app/home' />
-            <Software />
-            <HomeTools />
+            <Software component={<HomeTools />} />
           </PrivateRoute>
           <PrivateRoute exact path='/app/notifications'>
             <Redirect to='/app/home' />
-            <Software />
-            <Notifications />
+            <Software component={<Notifications />} />
           </PrivateRoute>
           <PrivateRoute exact path='/app/toptools'>
             <Redirect to='/app/home' />
-            <Software />
-            <TopTools />
+            <Software component={<TopTools />} />
           </PrivateRoute>
           <PrivateRoute exact path='/app/addtools'>
             <Redirect to='/app/home' />
-            <Software />
-            <AddTools />
+            <Software component={<AddTools />} />
           </PrivateRoute>
           <PrivateRoute exact path='/app/todoList'>
             <Redirect to='/app/home' />
-            <Software />
-            <TodoList />
+            <Software component={<TodoList />} />
           </PrivateRoute>
           <PrivateRoute exact path='/app/posttips'>
             <Redirect to='/app/home' />
-            <Software />
-            <PostTips />
+            <Software component={<PostTips />} />
           </PrivateRoute>
           <PrivateRoute exact path='/app/goals'>
             <Redirect to='/app/home' />
-            <Software />
-            <Goals />
+            <Software component={<Goals />} />
           </PrivateRoute>
           <PrivateRoute exact path='/app/agenda'>
             <Redirect to='/app/home' />
-            <Software />
-            <Agenda />
+            <Software component={<Agenda />} />
           </PrivateRoute>
           <PrivateRoute exact path='/app/spotify'>
             <Redirect to='/app/home' />
-            <Software />
-            <Spotify />
+            <Software component={<Spotify />} />
           </PrivateRoute>
           <PrivateRoute exact path='/app/groupchat'>
             <Redirect to='/app/home' />
-            <Software />
-            <GroupChat />
+            <Software component={<GroupChat />} />
           </PrivateRoute>
           <Route path='*'>
             <Error />

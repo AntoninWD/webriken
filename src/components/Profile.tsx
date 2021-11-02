@@ -61,10 +61,10 @@ const Wrapper = styled.div`
     left: 0;
     width: 90%;
     right: 0;
-    background-color: var(--clr-bcg);
+    background-color: var(--clr-grey-1);
     transition: var(--transition);
     z-index: 3;
-    border: 2px solid var(--clr-grey-5);
+    border: 2px solid var(--clr-grey-3);
     border-radius: 5px;
     display: flex;
     opacity: 0;
@@ -74,7 +74,7 @@ const Wrapper = styled.div`
     pointer-events: none;
   }
   li {
-    background-color: var(--clr-bcg);
+    background-color: transparent;
     width: 100% !important;
   }
 

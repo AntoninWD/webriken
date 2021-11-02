@@ -374,16 +374,16 @@ const Wrapper = styled.div`
     color: var(--clr-white);
     font-weight: 600;
     transition: var(--transition);
-    background-color: var(--clr-grey-4);
+    background: linear-gradient(
+      142deg,
+      rgba(238, 106, 5, 1) 0%,
+      rgba(245, 133, 5, 1) 91%
+    );
     border-radius: 5px;
     padding: 0.5rem 2rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
     box-shadow: rgba(58, 58, 58, 0.164) 0px 5px 10px;
-
-    :hover {
-      background-color: var(--clr-grey-3);
-    }
   }
 `;
 export default PostTips;

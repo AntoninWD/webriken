@@ -54,7 +54,6 @@ const TopbarSchedule: React.FC = () => {
     <Wrapper>
       <div className={active ? "show" : ""}>
         <h4>
-          Status:
           <span className={status}>{status}</span>
         </h4>
       </div>

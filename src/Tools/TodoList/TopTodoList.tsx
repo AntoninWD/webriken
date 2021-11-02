@@ -123,13 +123,16 @@ const Wrapper = styled.div`
   }
   button {
     border: none;
-    background-color: var(--clr-grey-4) !important;
+    background: linear-gradient(
+      142deg,
+      rgba(238, 106, 5, 1) 0%,
+      rgba(245, 133, 5, 1) 91%
+    );
     color: var(--clr-white);
-    padding: 0.25rem 0.7rem;
-    margin: 0;
+    padding: 0.27rem 0.7rem;
     cursor: pointer;
     margin-left: -15px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     border-radius: 5px;
     box-shadow: rgba(58, 58, 58, 0.082) 0px 5px 10px;
     transition: var(--transition);

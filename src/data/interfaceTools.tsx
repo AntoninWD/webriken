@@ -34,7 +34,7 @@ export const mainTools = [
 
   {
     id: 4,
-    text: "Add Tools",
+    text: "ADD TOOLS",
     component: "addtools",
     icon: <GiStarShuriken />,
   },

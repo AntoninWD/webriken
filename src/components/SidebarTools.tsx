@@ -6,17 +6,17 @@ import { addToolsContext } from "../context/tools_context";
 import { mainTools } from "../data/interfaceTools";
 
 import { FaTrophy, FaClipboardList, FaMusic, FaBookOpen } from "react-icons/fa";
-import { GiStarShuriken, GiTalk } from "react-icons/gi";
+import { GiTalk } from "react-icons/gi";
 
 import { GoPin } from "react-icons/go";
 
 const SidebarTools: React.FC = () => {
   const { setMain, mainComponent } = useContext(interfaceContext);
   const { tools } = useContext(addToolsContext);
-  const toolsBtn = mainTools.slice(3, 4);
+  const addToolsBtn = mainTools.slice(3, 4);
   return (
     <Wrapper>
-      {toolsBtn.map(({ text, component, active }, i) => {
+      {addToolsBtn.map(({ text, component, active }, i) => {
         return (
           <Link
             to={`/app/${component}`}
@@ -29,7 +29,6 @@ const SidebarTools: React.FC = () => {
             onClick={() => {
               setMain(component);
             }}>
-            <GiStarShuriken />
             {text}
           </Link>
         );
@@ -77,10 +76,9 @@ const SidebarTools: React.FC = () => {
 };
 
 const Wrapper = styled.div`
-  margin-left: 1rem;
   grid-area: tools;
   position: relative;
-
+  margin-top: 1rem;
   @media only screen and (max-height: 700px) {
     overflow-y: scroll;
     ::-webkit-scrollbar-track {
@@ -89,28 +87,40 @@ const Wrapper = styled.div`
     }
     ::-webkit-scrollbar {
       width: 6px;
-      background-color: var(--clr-grey-9);
+      background-color: transparent;
     }
 
     ::-webkit-scrollbar-thumb {
       border-radius: 10px;
-      background: var(--clr-grey-6);
+      background: transparent;
     }
   }
   .addToolBtn {
-    position: relative;
-    margin-left: 40px;
-    padding: 5px;
-    padding-left: 7px;
-    margin-bottom: 1.2rem;
+    margin-top: 1rem;
+    margin-bottom: 0.7rem;
     border-radius: 5px;
+    margin-left: 20%;
+    background: rgb(238, 106, 5);
+    background: linear-gradient(
+      142deg,
+      rgba(238, 106, 5, 1) 0%,
+      rgba(245, 133, 5, 1) 91%
+    );
     box-shadow: rgba(58, 58, 58, 0.246) 0px 5px 10px;
-    width: 50%;
-    border: 2px solid var(--clr-primary-4);
-    svg {
-      height: 20px;
-      position: absolute;
-      right: 0;
+    width: fit-content;
+    font-size: 0.9rem;
+    color: var(--clr-white) !important;
+    @media only screen and (max-width: 1350px) {
+      margin: 0;
+      margin-left: 15%;
+      margin-bottom: 0.7rem;
+      font-size: 0.8rem;
+      padding: 5px 20px;
+    }
+    @media only screen and (max-width: 1150px) {
+      margin-left: auto;
+      margin-right: auto;
+      padding: 5px 15px;
     }
   }
 

@@ -74,10 +74,10 @@ const Wrapper = styled.nav`
   }
 
   .logout {
-    background-color: var(--clr-grey-5);
+    background-color: var(--clr-grey-2);
     color: white;
     :hover {
-      background-color: var(--clr-grey-6);
+      background-color: var(--clr-grey-3);
     }
   }
 `;

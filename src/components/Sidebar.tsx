@@ -15,20 +15,25 @@ const Sidebar: React.FC = () => {
 };
 
 const Wrapper = styled.div`
-  position: absolute;
-  width: 230px;
-  height: calc(100vh);
+  grid-area: sidebar;
   display: grid;
-  border-right: 1px solid var(--clr-font-third);
-  background-color: var(--clr-bcg);
+  background-color: var(--clr-grey-1);
   transition: var(--transition);
   grid-template-areas:
     "top "
     "tools"
     "profile";
-  grid-template-rows: 225px 1fr 70px;
+
+  grid-template-rows: 210px 1fr 70px;
   @media only screen and (max-width: 900px) {
     display: none;
+  }
+
+  box-shadow: var(--dark-shadow);
+  z-index: 100;
+
+  @media only screen and (max-width: 1350px) {
+    font-size: 80%;
   }
 `;
 export default Sidebar;

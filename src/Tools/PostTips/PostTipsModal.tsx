@@ -105,6 +105,7 @@ const PostTipsModal: React.FC<Props> = ({
 
 const Wrapper = styled.div`
   .modal-overlay {
+    opacity: 0;
     position: fixed;
     top: 0;
     left: 0;
@@ -114,15 +115,15 @@ const Wrapper = styled.div`
     display: grid;
     place-items: center;
     transition: var(--transition);
-    visibility: hidden;
     z-index: -1;
   }
   /* OPEN/CLOSE MODAL */
   .show-modal {
-    visibility: visible;
-    z-index: 10;
+    opacity: 1;
+    z-index: 200;
   }
   .modal-container {
+    opacity: 1;
     background: var(--clr-bcg);
     border-radius: 5px;
     padding: 1rem 3rem;

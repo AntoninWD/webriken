@@ -10,8 +10,12 @@ const Newsletter: React.FC = () => {
 
         <div className='content'>
           <h1>Sign up to our newsletter</h1>
-          <form action='submit'>
-            <input type='email' placeholder='Enter your email address' />
+          <form>
+            <input
+              type='email'
+              placeholder='Enter your email address'
+              required
+            />
             <button>Sign up</button>
           </form>
         </div>

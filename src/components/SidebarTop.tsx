@@ -37,17 +37,19 @@ const SidebarTop: React.FC = () => {
 };
 const Wrapper = styled.div`
   text-align: center;
-  margin-left: 1rem;
   grid-area: top;
+
   svg {
     margin-right: 10px;
     pointer-events: none;
   }
   img {
-    height: 60px;
-    float: left;
-    margin-bottom: 1rem;
+    height: 70px;
     margin-top: 5px;
+  }
+
+  hr {
+    margin-top: 1rem;
   }
 `;
 export default SidebarTop;

@@ -89,28 +89,12 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   overflow-y: scroll;
-  ::-webkit-scrollbar-track {
-    border-radius: 10px;
-    background-color: transparent;
-  }
 
-  ::-webkit-scrollbar {
-    width: 14px;
-    background-color: transparent;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background: var(--clr-grey-9);
-  }
   @media only screen and (max-width: 900px) {
     display: none;
   }
   h2 {
-    margin-left: 5%;
     margin-top: 2rem;
-    position: absolute;
-    left: 10%;
   }
   h4 {
     color: var(--clr-primary-3);

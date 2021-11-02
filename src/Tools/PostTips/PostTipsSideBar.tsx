@@ -57,6 +57,9 @@ const PostTipsSideBar: React.FC<Props> = ({
           type='submit'
           className='plus-button'
           onClick={() => {
+            // Prevent a bug that when you click on + button it changes the active style button
+            if (currentTopicList.length === 12 || topic.current?.value === "")
+              return;
             addTopics(topic.current?.value);
             if (topic.current) {
               topicHandler(currentTopicList.length);
@@ -101,9 +104,8 @@ const PostTipsSideBar: React.FC<Props> = ({
 };
 
 const Wrapper = styled.div`
-  background-color: var(--clr-bcg);
-  height: calc(100vh - 70px);
-  border-right: 1px solid var(--clr-grey-8);
+  background-color: var(--clr-bcg-second);
+  border-right: 1px solid var(--clr-font-second);
   form {
     display: flex;
     justify-content: center;
@@ -124,7 +126,12 @@ const Wrapper = styled.div`
   }
   .plus-button {
     border: none;
-    background-color: var(--clr-grey-4);
+    background: rgb(238, 106, 5);
+    background: linear-gradient(
+      142deg,
+      rgba(238, 106, 5, 1) 0%,
+      rgba(245, 133, 5, 1) 91%
+    );
     color: var(--clr-white);
     padding: 0.37rem 0.7rem;
     margin: 0;
@@ -134,30 +141,16 @@ const Wrapper = styled.div`
     border-radius: 5px;
     box-shadow: rgba(58, 58, 58, 0.082) 0px 5px 10px;
     transition: var(--transition);
-    :hover {
-      background-color: var(--clr-grey-3);
-      border: none;
-    }
   }
   .topic-list {
-    height: 90%;
     overflow-y: scroll;
-    @media only screen and (max-height: 800px) {
-      height: 84%;
-    }
-    ::-webkit-scrollbar-track {
-      border-radius: 10px;
-      background-color: transparent;
-    }
-
     ::-webkit-scrollbar {
-      width: 14px;
+      width: 0;
       background-color: transparent;
     }
 
     ::-webkit-scrollbar-thumb {
-      border-radius: 10px;
-      background: var(--clr-grey-9);
+      background: transparent;
     }
   }
   .list {
@@ -187,8 +180,9 @@ const Wrapper = styled.div`
     font-weight: 600;
     font-size: 1rem;
     transition: var(--transition);
+
     :hover {
-      background-color: #c0dff81d;
+      background-color: var(--btn-bcg);
     }
   }
   .topic-container {
@@ -197,7 +191,7 @@ const Wrapper = styled.div`
     align-items: center;
   }
   .active {
-    background-color: var(--clr-font-third);
+    background-color: var(--btn-bcg) !important;
   }
   .color {
     width: 10px;

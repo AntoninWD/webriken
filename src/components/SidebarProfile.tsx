@@ -67,18 +67,27 @@ const Wrapper = styled.div`
   align-items: center;
   padding: 5px;
   position: relative;
+  color: var(--clr-white);
+  @media only screen and (max-width: 1650px) {
+    display: block;
+  }
+
   h5 {
     font-size: 0.9rem;
     margin: 0;
     margin-left: 10px;
-    color: var(--clr-font);
+    font-weight: 400;
+    color: var(--clr-white);
+    @media only screen and (max-width: 1650px) {
+      font-size: 80%;
+    }
   }
   svg {
     display: block;
     height: 17px;
     width: 17px;
     margin: 5px;
-    background-color: var(--clr-bcg);
+    color: var(--clr-white);
   }
 
   .profile {
@@ -94,11 +103,19 @@ const Wrapper = styled.div`
     img {
       width: 100%;
     }
+    @media only screen and (max-width: 1650px) {
+      height: 25px;
+      width: 25px;
+    }
   }
   .profile-btns {
     display: flex;
     position: absolute;
     right: 15px;
+    @media only screen and (max-width: 1650px) {
+      position: static;
+      justify-content: center;
+    }
   }
 
   .status {
@@ -106,16 +123,15 @@ const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
     padding: 5px;
+    @media only screen and (max-width: 1650px) {
+      justify-content: center;
+    }
   }
   .setting-btn {
     border: none;
     cursor: pointer;
     transition: var(--transition);
-    color: var(--clr-font);
-    background-color: transparent;
-    :hover {
-      color: var(--clr-primary-1);
-    }
+    background-color: var(--grey-1);
   }
 
   .online {
@@ -137,6 +153,8 @@ const Wrapper = styled.div`
   .top-bar {
     position: absolute;
     top: 0;
+    width: 90%;
+    margin-left: 3%;
   }
 `;
 export default SidebarProfile;

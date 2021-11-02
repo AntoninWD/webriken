@@ -8,7 +8,7 @@ const TopbarTask: React.FC = () => {
     <Wrapper>
       <div className={currentTask ? "display" : ""}>
         <h4>
-          Current Task: <span>{currentTask}</span>
+          <span>{currentTask}</span>
         </h4>
       </div>
     </Wrapper>
@@ -35,13 +35,7 @@ const Wrapper = styled.div`
     border-radius: 20px;
     color: var(--clr-white);
     box-shadow: var(--light-shadow);
-    background-color: var(--clr-font-second);
-    @media only screen and (max-width: 1400px) {
-      display: flex;
-      margin: 0;
-      font-size: 0.8rem;
-      text-align: center;
-    }
+    background-color: var(--clr-grey-5);
   }
 `;
 export default TopbarTask;

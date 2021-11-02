@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Rubik:wght@400;600&display=swap");
 
 /*
 =============== 
@@ -10,11 +10,11 @@ Variables
   --clr-bcg: #fff;
   --clr-bcg-second: hsl(0, 0%, 98%);
   --clr-bcg-third: hsla(32, 100%, 69%, 0.157);
-  --btn-bcg: hsl(210, 36%, 96%);
-  --clr-font: hsl(209, 44%, 23%);
-  --clr-font-input: hsl(209, 74%, 21%);
-  --clr-font-second: hsl(208, 34%, 75%);
-  --clr-font-third: hsl(209, 46%, 84%);
+  --btn-bcg: hsl(0, 0%, 92%);
+  --clr-font: hsl(207, 5%, 32%);
+  --clr-font-input: hsl(210, 7%, 40%);
+  --clr-font-second: hsl(0, 0%, 85%);
+  --clr-font-third: hsl(180, 1%, 83%);
   --clr-primary: #e44e02;
   --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 
@@ -30,17 +30,17 @@ Variables
   --clr-secondary-4: #770833;
   --clr-secondary-5: #6d0535;
   /* darkest grey - used for headings */
-  --clr-grey-1: hsl(209, 61%, 16%);
-  --clr-grey-2: hsl(211, 39%, 23%);
-  --clr-grey-3: hsl(209, 34%, 30%);
-  --clr-grey-4: hsl(209, 28%, 39%);
+  --clr-grey-1: hsl(206, 7%, 20%);
+  --clr-grey-2: hsl(206, 7%, 27%);
+  --clr-grey-3: hsl(206, 7%, 37%);
+  --clr-grey-4: hsl(206, 7%, 47%);
   /* grey used for paragraphs */
-  --clr-grey-5: hsl(210, 22%, 49%);
-  --clr-grey-6: hsl(209, 23%, 60%);
-  --clr-grey-7: hsl(211, 27%, 70%);
-  --clr-grey-8: hsl(210, 31%, 80%);
-  --clr-grey-9: hsl(212, 33%, 89%);
-  --clr-grey-10: hsl(210, 36%, 96%);
+  --clr-grey-5: hsl(206, 7%, 57%);
+  --clr-grey-6: hsl(206, 7%, 67%);
+  --clr-grey-7: hsl(206, 7%, 77%);
+  --clr-grey-8: hsl(206, 7%, 87%);
+  --clr-grey-9: hsl(206, 7%, 97%);
+  --clr-grey-10: hsl(206, 7%, 99%);
   --clr-white: #fff;
   --clr-black: #222;
   /* status colors*/
@@ -59,25 +59,25 @@ Variables
 }
 
 .dark-theme {
-  --clr-bcg: hsl(209, 61%, 16%);
-  --clr-bcg-second: hsl(210, 45%, 21%);
+  --clr-bcg: var(--clr-grey-1);
+  --clr-bcg-second: var(--clr-grey-2);
   --clr-bcg-third: hsla(32, 100%, 69%, 0.157);
-  --btn-bcg: hsl(207, 24%, 37%);
-  --clr-font: rgb(240, 240, 240);
-  --clr-font-input: rgb(230, 230, 230);
-  --clr-font-second: hsl(210, 23%, 47%);
-  --clr-font-third: hsl(210, 23%, 47%);
+  --btn-bcg: var(--clr-grey-3);
+  --clr-font: rgb(255, 255, 255);
+  --clr-font-input: rgb(160, 160, 160);
+  --clr-font-second: var(--clr-grey-4);
+  --clr-font-third: var(--clr-grey-2);
   --clr-primary: #f58505;
 }
 .light-theme {
   --clr-bcg: #fff;
   --clr-bcg-second: hsl(0, 0%, 98%);
   --clr-bcg-third: hsla(32, 100%, 69%, 0.157);
-  --btn-bcg: hsl(210, 36%, 96%);
-  --clr-font: hsl(209, 74%, 21%);
-  --clr-font-input: hsl(209, 74%, 21%);
-  --clr-font-second: hsl(208, 34%, 75%);
-  --clr-font-third: hsl(209, 46%, 84%);
+  --btn-bcg: hsl(0, 0%, 92%);
+  --clr-font: hsl(207, 5%, 32%);
+  --clr-font-input: hsl(210, 7%, 40%);
+  --clr-font-second: hsl(0, 0%, 85%);
+  --clr-font-third: hsl(180, 1%, 83%);
   --clr-primary: #e44e02;
   --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
@@ -95,7 +95,7 @@ Global Styles
   box-sizing: border-box;
 }
 body {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Roboto", sans-serif;
   background: var(--clr-white);
   color: var(--clr-grey-1);
   line-height: 1.5;
@@ -187,7 +187,7 @@ p {
   border-radius: 5px;
   display: inline-block;
   color: var(--clr-primary-2);
-  font-weight: 600;
+  font-weight: 400;
   transition: var(--transition);
   background-color: white;
   box-shadow: rgba(236, 161, 99, 0.52) 0px 5px 10px;
@@ -198,34 +198,41 @@ p {
 .btn-app {
   display: flex;
   align-items: center;
+  justify-content: start;
   font: unset;
   font-family: "Source Sans Pro", sans-serif;
   cursor: pointer;
   border: none;
   padding: 5px 22px;
-  margin: 10px 0;
+  margin: 10px 5%;
   border-radius: 5px;
-  width: 90%;
-  color: var(--clr-font);
-  font-weight: 600;
+  color: var(--clr-white);
+  font-weight: 400;
   transition: var(--transition);
+}
+@media only screen and (max-width: 1350px) {
+  .btn-app {
+    width: 80%;
+    padding: 5px;
+  }
+}
+svg {
+  margin-bottom: 2px;
 }
 .btn-app:hover {
   color: var(--clr-primary-4);
-  background-color: var(--btn-bcg);
+  background-color: var(--clr-grey-2);
 }
-.btn-app :focus {
-  color: var(--clr-primary-4);
-  background-color: var(--btn-bcg);
-}
+
 .active {
   color: var(--clr-primary-4) !important;
-  background-color: var(--btn-bcg) !important;
+  background-color: var(--clr-grey-2) !important;
 }
 
 .bar {
+  margin-left: 5%;
   width: 90%;
-  opacity: 0.3;
+  opacity: 0.4;
 }
 
 .remove-tool {
@@ -241,9 +248,9 @@ p {
   border-radius: 5px;
   color: var(--clr-white);
   background-color: var(--clr-secondary-3) !important;
-  font-weight: 600;
+  font-weight: 400;
   transition: var(--transition);
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   box-shadow: var(--shadow);
 }
 .remove-tool:hover {
@@ -297,15 +304,13 @@ p {
   }
 }
 .tools-wrapper {
-  position: absolute;
-  top: 67px;
-  right: 0;
-  width: calc(100vw - 230px);
-  height: calc(100vh - 67px);
+  grid-area: interface;
   background-color: var(--clr-bcg-second);
   transition: var(--transition);
   color: var(--clr-font);
+  width: 85vw;
   overflow-y: scroll;
+  position: relative;
 }
 .tools-wrapper ::-webkit-scrollbar-track {
   border-radius: 10px;
@@ -319,5 +324,10 @@ p {
 
 .tools-wrapper::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background: var(--clr-grey-9);
+  background: var(--clr-grey-6);
+}
+@media only screen and (min-width: 1600px) {
+  .tools-wrapper {
+    width: calc(100vw - 230px);
+  }
 }

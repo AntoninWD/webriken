@@ -15,16 +15,14 @@ const Topbar: React.FC = () => {
 };
 
 const Wrapper = styled.div`
+  grid-area: topbar;
   padding: 0 15px 0 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: calc(100vw - 230px);
-  height: 67px;
-  float: right;
-  background-color: var(--clr-bcg);
+  background-color: var(--clr-bcg-second);
   transition: var(--transition);
-  border-bottom: 1px solid var(--clr-font-third);
+  border-bottom: 1px solid var(--clr-font-second);
   @media only screen and (max-width: 900px) {
     display: none;
   }
@@ -33,7 +31,6 @@ const Wrapper = styled.div`
     display: inline-grid;
     grid-template-areas: "schedule pomodoro task";
     grid-template-columns: 1fr 1fr 1fr;
-    width: 120rem;
     justify-items: center;
     align-items: center;
 

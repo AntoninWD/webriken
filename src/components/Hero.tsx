@@ -78,11 +78,11 @@ const Wrapper = styled.div`
   }
   .btn-features {
     margin-right: 15px;
-    background-color: var(--clr-grey-5);
+    background-color: var(--clr-grey-2);
     color: white;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     :hover {
-      background-color: var(--clr-grey-6);
+      background-color: var(--clr-grey-3);
     }
   }
   .btn-important {

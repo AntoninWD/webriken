@@ -3,8 +3,10 @@ import { Topbar, Sidebar } from "../components";
 import styled from "styled-components";
 import construct from "../images/undraw_QA_engineers_dg5p (1).svg";
 import { Link } from "react-router-dom";
-
-const Software: React.FC = () => {
+interface Props {
+  component: JSX.Element;
+}
+const Software: React.FC<Props> = ({ component }) => {
   return (
     <Wrapper>
       <div className='mobile'>
@@ -16,21 +18,25 @@ const Software: React.FC = () => {
       </div>
       <Topbar />
       <Sidebar />
+      {component}
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  background-color: var(--clr-bcg);
+  display: grid;
+  height: 100vh;
+  grid-template-areas:
+    "sidebar topbar"
+    "sidebar interface";
+  grid-template-rows: 70px 1fr;
+  grid-template-columns: 15% 1fr;
   color: var(--clr-grey-4);
   transition: var(--transition);
-  button {
-    background-color: var(--clr-bcg);
+  overflow: hidden;
+  @media only screen and (min-width: 1600px) {
+    grid-template-columns: 230px 1fr;
   }
-  svg {
-    transition: var(--transition);
-  }
-
   .mobile {
     display: none;
     position: absolute;
