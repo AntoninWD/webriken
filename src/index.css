@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Rubik:wght@400;600&display=swap");
 
+@import url("https://cdn.syncfusion.com/ej2/material.css");
 /*
 =============== 
 Variables
 ===============
 */
-
 :root {
   --clr-bcg: #fff;
   --clr-bcg-second: hsl(0, 0%, 98%);
@@ -198,7 +198,7 @@ p {
 .btn-app {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   font: unset;
   font-family: "Source Sans Pro", sans-serif;
   cursor: pointer;
@@ -259,7 +259,7 @@ svg {
 
 .container {
   border: 2px solid var(--clr-grey-7);
-  margin: 0 10% 10rem 10%;
+  margin: 0 10% 1rem 10%;
   border-radius: 5px;
   background-color: var(--clr-bcg);
   padding: 1rem;
@@ -286,8 +286,9 @@ svg {
   height: 0;
   margin: 8px;
   box-sizing: border-box;
-  border: 32px solid hsl(211, 39%, 23%);
-  border-color: hsl(211, 39%, 23%) transparent hsl(211, 39%, 23%) transparent;
+  border: 32px solid hsl(0, 0%, 32%);
+  border-color: var(--clr-primary-2) transparent var(--clr-primary-2)
+    transparent;
   animation: lds-hourglass 1.2s infinite;
 }
 @keyframes lds-hourglass {
@@ -308,7 +309,6 @@ svg {
   background-color: var(--clr-bcg-second);
   transition: var(--transition);
   color: var(--clr-font);
-  width: 85vw;
   overflow-y: scroll;
   position: relative;
 }
@@ -325,9 +325,4 @@ svg {
 .tools-wrapper::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background: var(--clr-grey-6);
-}
-@media only screen and (min-width: 1600px) {
-  .tools-wrapper {
-    width: calc(100vw - 230px);
-  }
 }

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useContext } from "react";
 import styled from "styled-components";
-import { topToolsContext } from "../../context/topTools_context";
+import { topToolsContext } from "../context/topTools_context";
 const Schedule: React.FC = () => {
   const [formError, setFormError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -133,7 +133,7 @@ const Schedule: React.FC = () => {
 
         {/* LUNCH  */}
         <div className='Lunch-schedule'>
-          <h5>lunch</h5>
+          <h5>Lunch</h5>
           <label htmlFor='work'>Start: </label>
           <input
             type='time'
@@ -193,12 +193,12 @@ const Schedule: React.FC = () => {
 };
 
 const Wrapper = styled.div`
-  margin: 20% 0;
-  @media only screen and (max-width: 1450px) {
-    margin: 3rem 0;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   div {
-    margin: 0.8rem 0;
+    margin: 0.2rem 0;
   }
   .error {
     color: red;

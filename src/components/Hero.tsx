@@ -72,7 +72,7 @@ const Wrapper = styled.div`
     }
     p {
       margin-bottom: 3rem;
-      color: var(--clr-grey-6);
+      color: var(--clr-grey-2);
       font-weight: 400;
     }
   }

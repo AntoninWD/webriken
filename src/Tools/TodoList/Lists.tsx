@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaFlag, FaTimes } from "react-icons/fa";
 import styled from "styled-components";
 import todoImg from "../../images/undraw_completed_tasks_vs6q.svg";
+import { homeContext } from "../../context/home_context";
 type todoObject = {
   taskValue: string;
   dateValue: string;
@@ -27,6 +28,7 @@ const Lists: React.FC<Props> = ({
   priorityHandler,
   filteredTodoLists,
 }) => {
+  const { dueTodoHandler } = useContext(homeContext);
   return (
     <Wrapper>
       <div className='headers'>
@@ -55,7 +57,10 @@ const Lists: React.FC<Props> = ({
                 <input
                   type='date'
                   value={dateValue}
-                  onChange={(e) => dateHandler(e.target.value, i)}
+                  onChange={(e) => {
+                    dateHandler(e.target.value, i);
+                    dueTodoHandler(filteredTodoLists);
+                  }}
                   className='date'
                 />
                 <button
@@ -145,6 +150,7 @@ const Wrapper = styled.div`
     border-radius: 5px;
     box-shadow: var(--shadow);
     border: 1px solid var(--clr-font-second);
+    background-color: var(--clr-bcg);
     padding: 0.7rem;
   }
 

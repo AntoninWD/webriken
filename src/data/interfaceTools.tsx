@@ -8,9 +8,9 @@ import {
   FaTools,
 } from "react-icons/fa";
 import { GiStarShuriken, GiTalk } from "react-icons/gi";
-
+import { BsChatSquareDotsFill } from "react-icons/bs";
 import { GoPin } from "react-icons/go";
-
+import { RiTimerFill } from "react-icons/ri";
 export const mainTools = [
   {
     id: 1,
@@ -27,9 +27,9 @@ export const mainTools = [
   },
   {
     id: 3,
-    text: "Top Tools",
-    component: "toptools",
-    icon: <FaTools />,
+    text: "Messenger",
+    component: "messenger",
+    icon: <BsChatSquareDotsFill />,
   },
 
   {
@@ -84,11 +84,10 @@ export const allTools = [
   },
   {
     id: 10,
-    text: "Group Chat",
-    component: "groupchat",
-    icon: <GiTalk />,
-    type: "coming soon",
-    description:
-      "Chat with your team or classmate and see who is online or available.",
+    text: "Pomodoro",
+    component: "pomodoro",
+    icon: <RiTimerFill />,
+    type: "popular",
+    description: "Become productive with the pomodoro timer technique!",
   },
 ];

@@ -6,6 +6,7 @@ import TopTodoList from "./TopTodoList";
 import { interfaceContext } from "../../context/interface_context";
 import { mainTools } from "../../data/interfaceTools";
 import { Link } from "react-router-dom";
+import { homeContext } from "../../context/home_context";
 type todoObject = {
   taskValue: string;
   dateValue: string;
@@ -38,9 +39,11 @@ const TodoList: React.FC = () => {
   const showRef = useRef<HTMLSelectElement>(null);
   const { removeTool } = useContext(addToolsContext);
   const { setMain } = useContext(interfaceContext);
-
+  const { dueTodoHandler } = useContext(homeContext);
   useEffect(() => {
     localStorage.setItem("todo-list", JSON.stringify(filteredTodoLists));
+    dueTodoHandler(filteredTodoLists);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filteredTodoLists]);
 
   useEffect(() => {

@@ -1,7 +1,11 @@
 import React, { useState, useRef, useContext } from "react";
 import styled from "styled-components";
 import { topToolsContext } from "../../context/topTools_context";
-let select: any[] = [];
+import { Link } from "react-router-dom";
+import { mainTools } from "../../data/interfaceTools";
+import { interfaceContext } from "../../context/interface_context";
+import { addToolsContext } from "../../context/tools_context";
+let select: string[] = [];
 for (let i = 1; i <= 200; i++) {
   if (i === 1) {
     select.push(`${i} minute`);
@@ -17,6 +21,9 @@ const Pomodoro: React.FC = () => {
   const [work, setWork] = useState(0);
   const [pause, setPause] = useState(0);
 
+  const { removeTool } = useContext(addToolsContext);
+  const { setMain } = useContext(interfaceContext);
+
   const handleResults = () => {
     if (workTime.current && pauseTime.current !== null) {
       const w = Number(workTime.current.value.split(" ")[0]);
@@ -30,7 +37,8 @@ const Pomodoro: React.FC = () => {
     pomodoroHandler(work, pause);
   };
   return (
-    <Wrapper>
+    <Wrapper className='tools-wrapper'>
+      <h2>Pomodoro Timer</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor='work'>Work duration:</label>
@@ -77,17 +85,32 @@ const Pomodoro: React.FC = () => {
           </button>
         </div>
       </form>
+      <Link
+        to='/app/home'
+        className='remove-tool'
+        onClick={() => {
+          removeTool("Pomodoro");
+          setMain("home");
+          mainTools[0].active = true;
+        }}>
+        Remove tool
+      </Link>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  margin: 40% 0;
-  @media only screen and (max-width: 1450px) {
-    margin: 3rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  @media only screen and (max-width: 900px) {
+    display: none;
   }
+
   div {
     margin: 1rem 0;
+    text-align: center;
   }
   label {
     margin-right: 5px;
@@ -95,9 +118,28 @@ const Wrapper = styled.div`
   }
   select {
     box-shadow: rgba(58, 58, 58, 0.082) 0px 5px 10px;
+    border-radius: 5px;
+    margin-left: 5px;
+    padding: 2px;
+    box-shadow: var(--light-shadow);
   }
   button {
     margin-top: 2rem;
+    border-radius: 5px;
+    background: linear-gradient(
+      142deg,
+      rgba(238, 106, 5, 1) 0%,
+      rgba(245, 133, 5, 1) 91%
+    );
+    color: var(--clr-white);
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    font: inherit;
+    margin: 1rem;
+    cursor: pointer;
+    box-shadow: var(--dark-shadow);
   }
 `;
 export default Pomodoro;

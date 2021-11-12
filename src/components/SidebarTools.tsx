@@ -4,10 +4,8 @@ import styled from "styled-components";
 import { interfaceContext } from "../context/interface_context";
 import { addToolsContext } from "../context/tools_context";
 import { mainTools } from "../data/interfaceTools";
-
 import { FaTrophy, FaClipboardList, FaMusic, FaBookOpen } from "react-icons/fa";
-import { GiTalk } from "react-icons/gi";
-
+import { RiTimerFill } from "react-icons/ri";
 import { GoPin } from "react-icons/go";
 
 const SidebarTools: React.FC = () => {
@@ -46,14 +44,15 @@ const SidebarTools: React.FC = () => {
           if (component === "spotify") {
             logo = <FaMusic />;
           }
-          if (component === "groupchat") {
-            logo = <GiTalk />;
-          }
+
           if (component === "agenda") {
             logo = <FaBookOpen />;
           }
           if (component === "goals") {
             logo = <FaTrophy />;
+          }
+          if (component === "pomodoro") {
+            logo = <RiTimerFill />;
           }
           return (
             <Link

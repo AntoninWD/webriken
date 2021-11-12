@@ -10,11 +10,11 @@ import Agenda from "./Tools/Agenda/Agenda";
 import PostTips from "./Tools/PostTips/PostTips";
 import TodoList from "./Tools/TodoList/TodoList";
 import Spotify from "./Tools/Spotify/Spotify";
-import TopTools from "./Tools/TopTools/TopTools";
-import GroupChat from "./Tools/GroupChat/GroupChat";
+import Messenger from "./Tools/Messenger/Messenger";
 import { Redirect } from "react-router";
 import PrivateRoute from "./pages/PrivateRoute";
 import AuthWrapper from "./pages/AuthWrapper";
+import Pomodoro from "./Tools/Pomodoro/Pomodoro";
 function App() {
   return (
     <AuthWrapper>
@@ -31,9 +31,9 @@ function App() {
             <Redirect to='/app/home' />
             <Software component={<Notifications />} />
           </PrivateRoute>
-          <PrivateRoute exact path='/app/toptools'>
+          <PrivateRoute exact path='/app/messenger'>
             <Redirect to='/app/home' />
-            <Software component={<TopTools />} />
+            <Software component={<Messenger />} />
           </PrivateRoute>
           <PrivateRoute exact path='/app/addtools'>
             <Redirect to='/app/home' />
@@ -59,9 +59,9 @@ function App() {
             <Redirect to='/app/home' />
             <Software component={<Spotify />} />
           </PrivateRoute>
-          <PrivateRoute exact path='/app/groupchat'>
+          <PrivateRoute exact path='/app/pomodoro'>
             <Redirect to='/app/home' />
-            <Software component={<GroupChat />} />
+            <Software component={<Pomodoro />} />
           </PrivateRoute>
           <Route path='*'>
             <Error />

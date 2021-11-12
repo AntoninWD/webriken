@@ -118,7 +118,7 @@ const Wrapper = styled.div`
     font-size: 1rem;
     padding: 15px 5rem;
     margin: 0;
-    color: var(--clr-font-second);
+    color: var(--clr-font);
     background-color: var(--clr-bgr-second);
     border: none;
     font-family: inherit;
@@ -131,8 +131,8 @@ const Wrapper = styled.div`
       padding: 15px 3rem;
     }
     :hover {
-      border-bottom: 2px solid var(--clr-grey-4);
-      color: var(--clr-grey-4);
+      border-bottom: 2px solid var(--clr-primary-4);
+      color: var(--clr-primary-4);
     }
   }
   .activeBtn {
