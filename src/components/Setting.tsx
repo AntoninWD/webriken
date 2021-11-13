@@ -68,7 +68,7 @@ const Wrapper = styled.div`
     appearance: none;
     width: 3rem;
     height: 1.7rem;
-    background: var(--clr-bcg);
+    background: var(--clr-grey-1);
     border-radius: 3em;
     position: relative;
     cursor: pointer;
