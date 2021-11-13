@@ -20,7 +20,7 @@ const Setting: React.FC<Props> = ({ settingModal }) => {
         <input
           type='checkbox'
           className={
-            theme === "light-theme" ? "active-check on" : "active-check"
+            theme === "light-theme" ? "active-check" : "active-check  on"
           }
           onClick={() => {
             toggleTheme();
