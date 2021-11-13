@@ -3,6 +3,7 @@ import { FaFlag, FaTimes } from "react-icons/fa";
 import styled from "styled-components";
 import todoImg from "../../images/undraw_completed_tasks_vs6q.svg";
 import { homeContext } from "../../context/home_context";
+import { topToolsContext } from "../../context/topTools_context";
 type todoObject = {
   taskValue: string;
   dateValue: string;
@@ -10,6 +11,7 @@ type todoObject = {
   statusIndex: number;
   priority: string;
   priorityIndex: number;
+  active: boolean;
 };
 
 interface Props {
@@ -19,6 +21,7 @@ interface Props {
   statusHandler: (id: number) => void;
   priorityHandler: (id: number) => void;
   filteredTodoLists: todoObject[];
+  activeHandler: (task: string) => void;
 }
 const Lists: React.FC<Props> = ({
   removeTodoList,
@@ -27,7 +30,9 @@ const Lists: React.FC<Props> = ({
   statusHandler,
   priorityHandler,
   filteredTodoLists,
+  activeHandler,
 }) => {
+  const { taskHandler, currentTask } = useContext(topToolsContext);
   const { dueTodoHandler } = useContext(homeContext);
   return (
     <Wrapper>
@@ -36,6 +41,7 @@ const Lists: React.FC<Props> = ({
         <h5>End Date</h5>
         <h5 className='headers-status'>Status</h5>
         <h5>Priority</h5>
+        <h5>Active</h5>
       </div>
 
       {todoLists.length === 0 ? (
@@ -49,7 +55,7 @@ const Lists: React.FC<Props> = ({
 
       <div className='tasks'>
         {filteredTodoLists.map(
-          ({ taskValue, dateValue, status, priority }, i) => {
+          ({ taskValue, dateValue, status, priority, active }, i) => {
             return (
               <div key={i} className='task'>
                 <p className='task-value'>{taskValue}</p>
@@ -77,9 +83,24 @@ const Lists: React.FC<Props> = ({
                   }}>
                   <FaFlag />
                 </button>
+
+                <input
+                  type='checkbox'
+                  className={active ? "active-check on" : "active-check"}
+                  onClick={() => {
+                    activeHandler(taskValue);
+                    taskHandler(taskValue);
+                    if (currentTask === taskValue) taskHandler("");
+                  }}
+                />
+
                 <button
                   className='trash'
-                  onClick={() => removeTodoList(taskValue)}>
+                  onClick={() => {
+                    // delete the active task on the topbar if its active
+                    if (currentTask === taskValue) taskHandler("");
+                    removeTodoList(taskValue);
+                  }}>
                   <FaTimes />
                 </button>
               </div>
@@ -130,10 +151,13 @@ const Wrapper = styled.div`
   }
   .headers {
     display: grid;
-    grid-template-columns: 1fr 20% 10% 10% 10%;
+    grid-template-columns: 1fr 12rem 10% 10% 10% 5%;
     align-items: center;
     justify-items: center;
     margin: 2rem 3%;
+    @media only screen and (max-width: 1500px) {
+      grid-template-columns: 1fr 8rem 10% 10% 10% 5%;
+    }
   }
 
   .headers-status {
@@ -142,8 +166,9 @@ const Wrapper = styled.div`
     }
   }
   .task {
+    position: relative;
     display: grid;
-    grid-template-columns: 1fr 20% 10% 10% 10%;
+    grid-template-columns: 1fr max-content 10% 10% 10% 5%;
     justify-items: center;
     align-items: center;
     margin: 10px 2%;
@@ -199,7 +224,6 @@ const Wrapper = styled.div`
   }
 
   .priority {
-    transition: 0;
     background-color: transparent;
   }
   .in-progress {
@@ -213,14 +237,14 @@ const Wrapper = styled.div`
     background-color: #4bc05a;
   }
   .hold {
-    background-color: #dfc44b;
+    background-color: #f6c215;
   }
 
   .low {
     color: #3b54e4;
   }
   .medium {
-    color: #dfc44b;
+    color: #f6c215;
   }
 
   .high {
@@ -230,10 +254,56 @@ const Wrapper = styled.div`
     height: 20px;
     width: 20px;
   }
+
+  input[type="checkbox"].active-check {
+    font-size: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 3rem;
+    height: 1.7rem;
+    background: var(--clr-bcg);
+    border-radius: 3em;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid var(--clr-font-second);
+  }
+
+  input[type="checkbox"].on {
+    background: var(--clr-primary-3);
+  }
+
+  input[type="checkbox"].active-check:after {
+    position: absolute;
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: var(--clr-primary-3);
+    -webkit-box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
+    -webkit-transform: scale(0.7);
+    transform: scale(0.7);
+    bottom: 1px;
+    left: 0;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  input[type="checkbox"].on:after {
+    left: calc(100% - 1.5rem);
+    background: var(--clr-white);
+  }
+
   .trash {
     margin-top: 2px;
     width: 20px;
     background-color: inherit;
+    position: absolute;
+    right: 25px;
     :hover {
       color: var(--clr-secondary-2);
     }

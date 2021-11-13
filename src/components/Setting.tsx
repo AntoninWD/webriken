@@ -16,19 +16,27 @@ const Setting: React.FC<Props> = ({ settingModal }) => {
             ? "setting-overlay  setting-overlay-active"
             : "setting-overlay"
         }>
-        <button
-          className='btn-app'
+        <label>Dark mode</label>
+        <input
+          type='checkbox'
+          className={
+            theme === "light-theme" ? "active-check on" : "active-check"
+          }
           onClick={() => {
             toggleTheme();
-          }}>
-          Dark mode {theme === "light-theme" ? "(OFF)" : "(ON)"}
-        </button>
+          }}></input>
       </div>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
+  div {
+    padding: 1rem;
+  }
+  label {
+    margin-right: 1rem;
+  }
   .setting-overlay {
     position: absolute;
     bottom: 90px;
@@ -51,6 +59,49 @@ const Wrapper = styled.div`
   .setting-overlay-active {
     opacity: 1;
     pointer-events: visible;
+  }
+
+  input[type="checkbox"].active-check {
+    font-size: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 3rem;
+    height: 1.7rem;
+    background: var(--clr-bcg);
+    border-radius: 3em;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid var(--clr-font-second);
+  }
+
+  input[type="checkbox"].on {
+    background: var(--clr-primary-3);
+  }
+
+  input[type="checkbox"].active-check:after {
+    position: absolute;
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: var(--clr-primary-3);
+    -webkit-box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
+    -webkit-transform: scale(0.7);
+    transform: scale(0.7);
+    bottom: 1px;
+    left: 0;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  input[type="checkbox"].on:after {
+    left: calc(100% - 1.5rem);
+    background: var(--clr-white);
   }
   button {
     background-color: transparent;

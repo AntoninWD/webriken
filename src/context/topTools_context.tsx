@@ -21,6 +21,17 @@ type mainContext = {
   currentTask: string;
 };
 
+const getLocalStorage = () => {
+  let task = localStorage.getItem("current-task");
+
+  if (task) {
+    let storageTask: string = JSON.parse(task);
+    return storageTask;
+  } else {
+    return "";
+  }
+};
+
 export const topToolsContext = React.createContext<mainContext>({
   formValues: [],
   pomodoroTimer: true,
@@ -31,7 +42,7 @@ export const topToolsContext = React.createContext<mainContext>({
   sec: "",
   timeType: "",
   taskHandler: () => {},
-  currentTask: "",
+  currentTask: getLocalStorage(),
 });
 
 const TopToolsContextProvider: React.FC = ({ children }) => {
@@ -44,7 +55,7 @@ const TopToolsContextProvider: React.FC = ({ children }) => {
   const [workTime, setWorkTime] = useState(0);
   const [min, setMin] = useState("");
   const [sec, setSec] = useState("");
-  const [currentTask, setCurrentTask] = useState("");
+  const [currentTask, setCurrentTask] = useState(getLocalStorage());
 
   // Schedule
   const scheduleHandler = (values: formValues[]) => {

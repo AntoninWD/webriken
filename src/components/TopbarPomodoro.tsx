@@ -36,15 +36,15 @@ const Wrapper = styled.div`
   .on {
     margin: 0 10px;
     padding: 7px 10px;
-    border-radius: 20px;
+    border-radius: 5px;
     color: var(--clr-white);
     box-shadow: var(--light-shadow);
     background-color: var(--clr-active);
   }
   .off {
     margin: 0 10px;
+    border-radius: 5px;
     padding: 7px 10px;
-    border-radius: 20px;
     color: var(--clr-white);
     box-shadow: var(--light-shadow);
     background-color: var(--clr-busy);

@@ -1,9 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { topToolsContext } from "../context/topTools_context";
 
 const TopbarTask: React.FC = () => {
   const { currentTask } = useContext(topToolsContext);
+
+  useEffect(() => {
+    localStorage.setItem("current-task", JSON.stringify(currentTask));
+  }, [currentTask]);
   return (
     <Wrapper>
       <div className={currentTask ? "display" : ""}>
@@ -26,16 +30,16 @@ const Wrapper = styled.div`
   }
   h4 {
     margin: 0 0.8rem;
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   span {
     font-size: 1rem;
     margin: 0 0 0 5px;
-    padding: 5px 10px;
-    border-radius: 20px;
+    padding: 6px 10px;
+    border-radius: 5px;
     color: var(--clr-white);
     box-shadow: var(--light-shadow);
-    background-color: var(--clr-grey-5);
+    background-color: var(--clr-offline);
   }
 `;
 export default TopbarTask;

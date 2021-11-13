@@ -76,7 +76,7 @@ const Wrapper = styled.div`
   span {
     margin: 0 10px;
     padding: 5px 10px;
-    border-radius: 20px;
+    border-radius: 5px;
     color: var(--clr-white);
     box-shadow: var(--light-shadow);
     background-color: var(--clr-offline);

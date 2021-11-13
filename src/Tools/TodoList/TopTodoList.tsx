@@ -7,6 +7,7 @@ type todoObject = {
   statusIndex: number;
   priority: string;
   priorityIndex: number;
+  active: boolean;
 };
 
 interface Props {
@@ -30,6 +31,7 @@ const TopTodoList: React.FC<Props> = ({
     statusIndex: 0,
     priority: priorityArray[0],
     priorityIndex: 0,
+    active: false,
   };
 
   const handleSubmit = (e: React.FormEventHandler<HTMLFormElement> | any) => {

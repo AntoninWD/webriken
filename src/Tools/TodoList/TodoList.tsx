@@ -14,6 +14,7 @@ type todoObject = {
   statusIndex: number;
   priority: string;
   priorityIndex: number;
+  active: boolean;
 };
 
 const statusArray = ["In-Progress", "Not-Started", "Completed", "Hold"];
@@ -40,6 +41,7 @@ const TodoList: React.FC = () => {
   const { removeTool } = useContext(addToolsContext);
   const { setMain } = useContext(interfaceContext);
   const { dueTodoHandler } = useContext(homeContext);
+
   useEffect(() => {
     localStorage.setItem("todo-list", JSON.stringify(filteredTodoLists));
     dueTodoHandler(filteredTodoLists);
@@ -110,6 +112,7 @@ const TodoList: React.FC = () => {
       });
     });
   };
+
   const showHandler = (showValue: string) => {
     if (showValue === "all") {
       setFilteredTodoLists(todoLists);
@@ -130,6 +133,24 @@ const TodoList: React.FC = () => {
     setFilteredTodoLists(newFilteredList);
   };
 
+  const activeHandler = (task: string) => {
+    setFilteredTodoLists((prevList) => {
+      return prevList.map((e) => {
+        if (task === e.taskValue) {
+          if (e.active === true) {
+            e.active = false;
+          } else {
+            e.active = true;
+          }
+          return e;
+        } else {
+          e.active = false;
+          return e;
+        }
+      });
+    });
+  };
+
   return (
     <Wrapper className='tools-wrapper'>
       <TopTodoList
@@ -146,6 +167,7 @@ const TodoList: React.FC = () => {
         statusHandler={statusHandler}
         priorityHandler={priorityHandler}
         filteredTodoLists={filteredTodoLists}
+        activeHandler={activeHandler}
       />
       <Link
         to='/app/home'

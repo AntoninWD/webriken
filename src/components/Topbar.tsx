@@ -18,24 +18,30 @@ const Wrapper = styled.div`
   grid-area: topbar;
   padding: 0 15px 0 20px;
   display: flex;
-  justify-content: center;
+  justify-content: space-space-between;
   align-items: center;
   background-color: var(--clr-bcg-second);
   transition: var(--transition);
   border-bottom: 1px solid var(--clr-font-second);
+
   @media only screen and (max-width: 900px) {
     display: none;
   }
-
   .top-app {
     display: inline-grid;
     grid-template-areas: "schedule pomodoro task";
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr max-content 1fr;
     justify-items: center;
     align-items: center;
-
+    width: 100%;
     h4 {
       margin: 0;
+    }
+    @media only screen and (max-width: 1500px) {
+      grid-template-columns: 1fr max-content 1.5fr;
+    }
+    @media only screen and (max-width: 1200px) {
+      grid-template-columns: 1fr max-content max-content;
     }
   }
 `;

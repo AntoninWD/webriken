@@ -5,9 +5,8 @@ import {
   FaClipboardList,
   FaMusic,
   FaBookOpen,
-  FaTools,
 } from "react-icons/fa";
-import { GiStarShuriken, GiTalk } from "react-icons/gi";
+import { GiStarShuriken } from "react-icons/gi";
 import { BsChatSquareDotsFill } from "react-icons/bs";
 import { GoPin } from "react-icons/go";
 import { RiTimerFill } from "react-icons/ri";
