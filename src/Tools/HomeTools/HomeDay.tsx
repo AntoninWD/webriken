@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { CalendarComponent } from "@syncfusion/ej2-react-calendars";
+
 const HomeDay: React.FC = () => {
   // Timer
   let time = new Date().toLocaleTimeString();
@@ -43,6 +44,7 @@ const HomeDay: React.FC = () => {
           }
         };
       });
+      return;
     } catch (err) {
       setLoading(true);
       console.log(err);
@@ -52,7 +54,7 @@ const HomeDay: React.FC = () => {
   useEffect(() => {
     weather();
     return () => {
-      setLoading(true);
+      return setLoading(true);
     };
   }, []);
 
@@ -84,6 +86,16 @@ const Wrapper = styled.div`
     justify-content: space-evenly;
     align-items: flex-start;
     margin: 1rem;
+
+    @media only screen and (max-width: 600px) {
+      display: flex;
+      width: 90%;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin: 0;
+      margin-left: 5%;
+    }
   }
   .time-weather {
     display: flex;
@@ -92,6 +104,11 @@ const Wrapper = styled.div`
 
     @media only screen and (max-width: 1400px) {
       margin-left: 1%;
+    }
+
+    @media only screen and (max-width: 600px) {
+      margin-top: 1rem;
+      margin-left: 0;
     }
   }
   .time {
@@ -120,6 +137,11 @@ const Wrapper = styled.div`
     h2 {
       margin: 0;
       margin-right: 1rem;
+    }
+
+    @media only screen and (max-width: 600px) {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
     }
   }
   .e-calendar {
@@ -201,9 +223,9 @@ const Wrapper = styled.div`
   }
 
   .loading {
-    width: 80px;
-    height: 80px;
-    padding: 5rem 7rem;
+    width: 60px;
+    height: 60px;
+    padding: 3.5rem 7rem;
     display: flex;
   }
   .loading:after {

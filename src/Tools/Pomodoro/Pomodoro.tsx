@@ -104,9 +104,6 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  @media only screen and (max-width: 900px) {
-    display: none;
-  }
 
   div {
     margin: 1rem 0;

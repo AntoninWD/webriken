@@ -6,7 +6,7 @@ import TopTodoList from "./TopTodoList";
 import { interfaceContext } from "../../context/interface_context";
 import { mainTools } from "../../data/interfaceTools";
 import { Link } from "react-router-dom";
-import { homeContext } from "../../context/home_context";
+
 type todoObject = {
   taskValue: string;
   dateValue: string;
@@ -17,7 +17,7 @@ type todoObject = {
   active: boolean;
 };
 
-const statusArray = ["In-Progress", "Not-Started", "Completed", "Hold"];
+const statusArray = ["Not-Started", "In-Progress", "Completed", "Hold"];
 const priorityArray = ["low", "medium", "high"];
 
 const getLocalStorage = () => {
@@ -40,11 +40,10 @@ const TodoList: React.FC = () => {
   const showRef = useRef<HTMLSelectElement>(null);
   const { removeTool } = useContext(addToolsContext);
   const { setMain } = useContext(interfaceContext);
-  const { dueTodoHandler } = useContext(homeContext);
 
   useEffect(() => {
     localStorage.setItem("todo-list", JSON.stringify(filteredTodoLists));
-    dueTodoHandler(filteredTodoLists);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filteredTodoLists]);
 
@@ -184,9 +183,6 @@ const TodoList: React.FC = () => {
 };
 
 const Wrapper = styled.div`
-  @media only screen and (max-width: 900px) {
-    display: none;
-  }
   h1 {
     text-align: center;
   }

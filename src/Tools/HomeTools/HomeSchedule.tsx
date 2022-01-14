@@ -10,7 +10,6 @@ const HomeSchedule: React.FC = () => {
   );
 };
 const Wrapper = styled.div`
-  
     grid-area: schedule;
     text-align: center;
     display: flex;
@@ -29,6 +28,9 @@ const Wrapper = styled.div`
     span {
       color: red;
     }
+    @media only screen and (max-width: 600px) {
+      margin: 2rem 1%;
+  }
   }
   input {
     font-family: inherit;
@@ -60,18 +62,12 @@ const Wrapper = styled.div`
     font: unset;
     font-family: "Source Sans Pro", sans-serif;
     cursor: pointer;
-    border: 2px solid var(--clr-font-input);
-    padding: 5px;
+    padding: 5px 7px;
     border-radius: 5px;
-    color: var(--clr-primary-4);
-    font-weight: 600;
     transition: var(--transition);
     margin: 0.5rem;
     margin-top: 1rem;
-    background-color: var(--clr-bcg);
-    :hover {
-      border: 2px solid var(--clr-primary-4);
-    }
+
   
 `;
 export default HomeSchedule;

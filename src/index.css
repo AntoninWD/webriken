@@ -50,6 +50,7 @@ Variables
   --clr-offline: #7c7876;
   /* other vars*/
   --transition: all 0.2s ease;
+  --very-light-shadow: 0 5px 15px rgba(17, 17, 17, 0.062);
   --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   --phone: 600px;
@@ -312,6 +313,18 @@ svg {
   overflow-y: scroll;
   position: relative;
 }
+
+@media only screen and (max-width: 600px) {
+  .tools-wrapper::-webkit-scrollbar {
+    width: 0 !important;
+    background-color: transparent;
+  }
+
+  .tools-wrapper::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: transparent;
+  }
+}
 .tools-wrapper ::-webkit-scrollbar-track {
   border-radius: 10px;
   background-color: transparent;
@@ -325,4 +338,36 @@ svg {
 .tools-wrapper::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background: var(--clr-grey-6);
+}
+
+@media only screen and (max-width: 900px) {
+  .sidebar-open {
+    opacity: 1;
+    transform: translateX(50px);
+  }
+
+  .sidebar-close {
+    opacity: 0;
+    transform: translateX(-150px);
+  }
+
+  .overlay-open {
+    position: absolute;
+    background-color: #000000;
+    opacity: 0.5;
+    width: 170%;
+    height: 100%;
+    pointer-events: auto;
+    z-index: 2;
+  }
+
+  .overlay-close {
+    opacity: 0;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .sidebar-overlay {
+    pointer-events: none;
+  }
 }

@@ -130,7 +130,6 @@ const PostTips: React.FC = () => {
     if (sortRef.current?.value === "importance") {
       setCurrentNotesList(
         [...list].sort((a, b) => {
-          console.log(a, b);
           if (a.importance === "low" && b.importance === "medium") {
             return 1;
           }
@@ -242,16 +241,19 @@ const PostTips: React.FC = () => {
 };
 
 const Wrapper = styled.div`
-  @media only screen and (max-width: 900px) {
-    display: none;
-  }
   display: grid;
   grid-template-areas: "sidebar notes";
   grid-template-columns: 15rem 5fr;
+  @media only screen and (max-width: 620px) {
+    display: block;
+  }
   .add {
     @media only screen and (max-width: 1100px) {
       float: left;
       margin-left: 2rem;
+    }
+    @media only screen and (max-width: 620px) {
+      margin: 0 0.5rem;
     }
   }
   hr {
@@ -286,10 +288,20 @@ const Wrapper = styled.div`
       }
     }
   }
+  .notes-top {
+    @media only screen and (max-width: 620px) {
+      display: flex;
+      justify-content: space-evenly;
+    }
+  }
+
   .sort {
     position: absolute;
     top: 2.5rem;
     right: 5%;
+    @media only screen and (max-width: 620px) {
+      position: relative;
+    }
   }
 
   .notes-page {
@@ -303,8 +315,9 @@ const Wrapper = styled.div`
     grid-template-columns: 1fr 1fr;
     justify-items: center;
     @media only screen and (max-width: 1100px) {
-      grid-template-columns: 1fr;
-      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
   }
 
@@ -316,6 +329,9 @@ const Wrapper = styled.div`
   .notes-container::-webkit-scrollbar {
     width: 14px;
     background-color: transparent;
+    @media only screen and (max-width: 650px) {
+      width: 0;
+    }
   }
 
   .notes-container::-webkit-scrollbar-thumb {
@@ -332,6 +348,9 @@ const Wrapper = styled.div`
     margin: 2rem;
     box-shadow: rgba(58, 58, 58, 0.164) 0px 5px 10px;
     padding: 0.5rem 0;
+    @media only screen and (max-width: 1100px) {
+      margin: 2rem 0;
+    }
   }
 
   h4 {

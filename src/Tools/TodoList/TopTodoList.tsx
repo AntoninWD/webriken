@@ -44,15 +44,17 @@ const TopTodoList: React.FC<Props> = ({
   return (
     <Wrapper>
       <div className='section'>
-        <div>
+        <div className='inputs'>
           <form onSubmit={handleSubmit}>
             <label htmlFor='task'>Add New Task: </label>
-            <input
-              type='text'
-              placeholder='Insert your task here.'
-              onChange={(e) => (todoObj.taskValue = e.target.value)}
-            />
-            <button>+</button>
+            <div>
+              <input
+                type='text'
+                placeholder='Insert your task here.'
+                onChange={(e) => (todoObj.taskValue = e.target.value)}
+              />
+              <button>+</button>
+            </div>
           </form>
         </div>
         <div>
@@ -87,6 +89,20 @@ const Wrapper = styled.div`
     @media only screen and (max-width: 1300px) {
       margin: 2rem 5%;
     }
+    @media only screen and (max-width: 720px) {
+      display: block;
+      text-align: center;
+      margin: 3rem 10%;
+    }
+  }
+
+  form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media only screen and (max-width: 600px) {
+      display: inline-block;
+    }
   }
   hr {
     margin-left: 5%;
@@ -100,11 +116,12 @@ const Wrapper = styled.div`
     ::placeholder {
       text-align: center;
     }
-    @media only screen and (max-width: 1300px) {
-      /* width: 25rem; */
-    }
+
     @media only screen and (max-width: 1200px) {
       width: 20rem;
+    }
+    @media only screen and (max-width: 430px) {
+      width: 14rem;
     }
   }
 
@@ -113,9 +130,13 @@ const Wrapper = styled.div`
     margin: 0 5px;
     border: 1px solid var(--clr-grey-5);
     border-radius: 5px;
-    padding: 2px;
+    padding: 3px;
     font: inherit;
     font-weight: 400;
+    padding-top: 4px;
+    @media only screen and (max-width: 500px) {
+      margin: 0;
+    }
   }
 
   select {
@@ -131,7 +152,7 @@ const Wrapper = styled.div`
       rgba(245, 133, 5, 1) 91%
     );
     color: var(--clr-white);
-    padding: 0.27rem 0.7rem;
+    padding: 0.37rem 0.7rem;
     cursor: pointer;
     margin-left: -15px;
     font-size: 1.1rem;
@@ -142,6 +163,13 @@ const Wrapper = styled.div`
       background-color: var(--clr-grey-3);
       border: none;
     }
+    @media only screen and (max-width: 720px) {
+      padding: 0.3rem 0.65rem;
+    }
+  }
+
+  .inputs {
+    margin: 1rem 0;
   }
 `;
 export default TopTodoList;

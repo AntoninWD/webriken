@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { interfaceContext } from "../context/interface_context";
 import { mainTools } from "../data/interfaceTools";
 import { useAuth0 } from "@auth0/auth0-react";
+
 const SidebarProfile: React.FC = () => {
   const { setMain } = useContext(interfaceContext);
   const [status, setStatus] = useState("online");

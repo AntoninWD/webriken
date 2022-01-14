@@ -36,7 +36,7 @@ const Schedule: React.FC = () => {
     },
   ];
 
-  type formValues = {
+  type formValuesObj = {
     title: string;
     startRef: React.RefObject<HTMLInputElement>;
     startValue: string | undefined;
@@ -44,7 +44,7 @@ const Schedule: React.FC = () => {
     endValue: string | undefined;
   };
 
-  const handleFormError = (v: formValues[]) => {
+  const handleFormError = (v: formValuesObj[]) => {
     v.map((value) => {
       value.startValue = value.startRef.current?.value;
       value.endValue = value.endRef.current?.value;
@@ -171,6 +171,7 @@ const Schedule: React.FC = () => {
             onClick={() => {
               setFormError(false);
               handleFormError(values);
+              if (!values[0].startRef.current?.value) return;
               if (formError === false) {
                 // send values to context
                 scheduleHandler(values);
@@ -204,6 +205,22 @@ const Wrapper = styled.div`
     color: red;
     opacity: 1;
     font-size: 12px;
+  }
+
+  button {
+    padding: 5px 7px;
+    border-radius: 5px;
+    color: var(--clr-white);
+    border: none;
+    background: linear-gradient(
+      142deg,
+      rgba(238, 106, 5, 1) 0%,
+      rgba(245, 133, 5, 1) 91%
+    );
+    box-shadow: rgba(58, 58, 58, 0.246) 0px 5px 10px;
+    :hover {
+      border: none;
+    }
   }
 `;
 export default Schedule;

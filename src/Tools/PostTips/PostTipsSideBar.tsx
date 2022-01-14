@@ -110,6 +110,9 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     margin: 1rem 0;
+    @media only screen and (max-width: 620px) {
+      margin-top: 3rem;
+    }
   }
   hr {
     margin: 1rem 0;

@@ -20,6 +20,10 @@ const Wrapper = styled.div`
   img {
     width: 400px;
     height: 400px;
+    @media only screen and (max-width: 600px) {
+      width: 200px;
+      height: 200px;
+    }
   }
   .container {
     padding: 5rem;

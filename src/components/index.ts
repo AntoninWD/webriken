@@ -11,7 +11,7 @@ import Topbar from "./Topbar";
 import TopbarSchedule from "./TopbarSchedule";
 import TopbarPomodoro from "./TopbarPomodoro";
 import TopbarTask from "./TopbarTask";
-
+import TopbarMenu from "./TopbarMenu";
 import Construction from "./Construction";
 export {
   Features,
@@ -23,6 +23,7 @@ export {
   TopbarSchedule,
   TopbarPomodoro,
   TopbarTask,
+  TopbarMenu,
   SidebarTop,
   SidebarTools,
   SidebarProfile,

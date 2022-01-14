@@ -48,7 +48,10 @@ const Wrapper = styled.div`
     border-radius: 5px;
     box-shadow: var(--shadow);
     border: 1px solid var(--clr-font-second);
-    width: 15rem;
+    width: 12rem;
+    @media only screen and (max-width: 600px) {
+      width: 70%;
+    }
   }
 `;
 export default HomeStats;

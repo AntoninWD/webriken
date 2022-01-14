@@ -33,9 +33,16 @@ const Setting: React.FC<Props> = ({ settingModal }) => {
 const Wrapper = styled.div`
   div {
     padding: 1rem;
+    @media only screen and (max-width: 1100px) {
+      padding: 0.7rem;
+    }
   }
   label {
     margin-right: 1rem;
+    @media only screen and (max-width: 1100px) {
+      font-size: 0.7rem;
+      margin-right: 0.5rem;
+    }
   }
   .setting-overlay {
     position: absolute;
@@ -53,6 +60,7 @@ const Wrapper = styled.div`
     pointer-events: none;
     margin-left: 0.5rem;
     justify-content: center;
+    align-items: center;
     box-shadow: rgba(58, 58, 58, 0.383) 0px 5px 10px;
   }
 
@@ -66,8 +74,8 @@ const Wrapper = styled.div`
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    width: 3rem;
-    height: 1.7rem;
+    width: 2rem;
+    height: 1.1rem;
     background: var(--clr-grey-1);
     border-radius: 3em;
     position: relative;
@@ -85,8 +93,8 @@ const Wrapper = styled.div`
   input[type="checkbox"].active-check:after {
     position: absolute;
     content: "";
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 0.8rem;
+    height: 0.85rem;
     border-radius: 50%;
     background: var(--clr-primary-3);
     -webkit-box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
@@ -100,7 +108,7 @@ const Wrapper = styled.div`
   }
 
   input[type="checkbox"].on:after {
-    left: calc(100% - 1.5rem);
+    left: calc(100% - 0.9rem);
     background: var(--clr-white);
   }
   button {

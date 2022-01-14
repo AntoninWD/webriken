@@ -8,7 +8,11 @@ import { FaTrophy, FaClipboardList, FaMusic, FaBookOpen } from "react-icons/fa";
 import { RiTimerFill } from "react-icons/ri";
 import { GoPin } from "react-icons/go";
 
-const SidebarTools: React.FC = () => {
+type Props = {
+  sideBarHandler: () => void;
+};
+
+const SidebarTools: React.FC<Props> = ({ sideBarHandler }) => {
   const { setMain, mainComponent } = useContext(interfaceContext);
   const { tools } = useContext(addToolsContext);
   const addToolsBtn = mainTools.slice(3, 4);
@@ -26,6 +30,7 @@ const SidebarTools: React.FC = () => {
             }`}
             onClick={() => {
               setMain(component);
+              sideBarHandler();
             }}>
             {text}
           </Link>
@@ -63,6 +68,7 @@ const SidebarTools: React.FC = () => {
               }`}
               onClick={() => {
                 setMain(component);
+                sideBarHandler();
               }}>
               {logo}
               {text}
@@ -115,11 +121,19 @@ const Wrapper = styled.div`
       margin-bottom: 0.7rem;
       font-size: 0.8rem;
       padding: 5px 20px;
+      margin-top: 0.3rem;
     }
     @media only screen and (max-width: 1150px) {
       margin-left: auto;
       margin-right: auto;
       padding: 5px 15px;
+    }
+    @media only screen and (max-width: 900px) {
+      margin-top: 1rem;
+    }
+
+    @media only screen and (max-width: 800px) {
+      margin-top: 0.7rem;
     }
   }
 

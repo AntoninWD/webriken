@@ -16,12 +16,13 @@ const HomeTask: React.FC = () => {
   useEffect(() => {
     const d = new Date();
     setDay(
-      `${d.getFullYear()}-${d.getMonth() + 1}-${d
+      `${d.getFullYear()}-${(d.getMonth() + 1).toString().padStart(2, "0")}-${d
         .getDate()
         .toString()
         .padStart(2, "0")}`
     );
   }, []);
+
   return (
     <Wrapper className='task'>
       <h4>Task Due Today</h4>
@@ -114,6 +115,7 @@ const Wrapper = styled.div`
       142deg,
       rgba(238, 106, 5, 1) 0%,
       rgba(245, 133, 5, 1) 91%
+     
     );
       color: var(--clr-white);
       font-weight: 600;

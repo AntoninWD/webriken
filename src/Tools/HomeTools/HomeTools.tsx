@@ -39,9 +39,7 @@ const Wrapper = styled.div`
   @media only screen and (max-width: 1400px) {
     padding: 1%;
   }
-  @media only screen and (max-width: 900px) {
-    display: none;
-  }
+
   h3 {
     margin-top: 1rem;
   }
@@ -59,6 +57,9 @@ const Wrapper = styled.div`
     @media only screen and (max-width: 1150px) {
       display: block;
       padding: 0 10%;
+    }
+    @media only screen and (max-width: 700px) {
+      padding: 0 2%;
     }
   }
 `;

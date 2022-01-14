@@ -28,9 +28,6 @@ const Agenda: React.FC = () => {
 };
 
 const Wrapper = styled.div`
-  @media only screen and (max-width: 900px) {
-    display: none;
-  }
   h1 {
     text-align: center;
     position: relative;

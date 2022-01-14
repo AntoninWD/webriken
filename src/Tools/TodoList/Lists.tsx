@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { FaFlag, FaTimes } from "react-icons/fa";
 import styled from "styled-components";
 import todoImg from "../../images/undraw_completed_tasks_vs6q.svg";
 import { homeContext } from "../../context/home_context";
 import { topToolsContext } from "../../context/topTools_context";
+import { notificationsContext } from "../../context/notifications_context";
+
 type todoObject = {
   taskValue: string;
   dateValue: string;
@@ -13,7 +15,6 @@ type todoObject = {
   priorityIndex: number;
   active: boolean;
 };
-
 interface Props {
   removeTodoList: (task: string) => void;
   todoLists: todoObject[];
@@ -34,6 +35,28 @@ const Lists: React.FC<Props> = ({
 }) => {
   const { taskHandler, currentTask } = useContext(topToolsContext);
   const { dueTodoHandler } = useContext(homeContext);
+
+  const { setNotificationsHandler } = useContext(notificationsContext);
+
+  useEffect(() => {
+    return () => {
+      dueTodoHandler(filteredTodoLists);
+      sendOutdatedTodolistsHandler(filteredTodoLists);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filteredTodoLists]);
+
+  const sendOutdatedTodolistsHandler = (t: todoObject[]) => {
+    setNotificationsHandler(
+      t.map(({ taskValue, dateValue }: todoObject) => {
+        return {
+          text: taskValue,
+          dueTime: dateValue,
+          from: "To-do List",
+        };
+      })
+    );
+  };
   return (
     <Wrapper>
       <div className='headers'>
@@ -44,13 +67,11 @@ const Lists: React.FC<Props> = ({
         <h5>Active</h5>
       </div>
 
-      {todoLists.length === 0 ? (
+      {!todoLists.length && (
         <div className='add-task'>
           <img src={todoImg} alt='add-task' />
           <h2>Add a task to get started!</h2>
         </div>
-      ) : (
-        ""
       )}
 
       <div className='tasks'>
@@ -58,14 +79,15 @@ const Lists: React.FC<Props> = ({
           ({ taskValue, dateValue, status, priority, active }, i) => {
             return (
               <div key={i} className='task'>
-                <p className='task-value'>{taskValue}</p>
+                <div className='task-value'>
+                  <p>{taskValue}</p>
+                </div>
 
                 <input
                   type='date'
                   value={dateValue}
                   onChange={(e) => {
                     dateHandler(e.target.value, i);
-                    dueTodoHandler(filteredTodoLists);
                   }}
                   className='date'
                 />
@@ -148,6 +170,9 @@ const Wrapper = styled.div`
       width: 7rem;
       margin-right: 10px;
     }
+    @media only screen and (max-width: 374px) {
+      width: 3rem;
+    }
   }
   .headers {
     display: grid;
@@ -157,6 +182,9 @@ const Wrapper = styled.div`
     margin: 2rem 3%;
     @media only screen and (max-width: 1500px) {
       grid-template-columns: 1fr 8rem 10% 10% 10% 5%;
+    }
+    @media only screen and (max-width: 700px) {
+      display: none;
     }
   }
 
@@ -177,12 +205,30 @@ const Wrapper = styled.div`
     border: 1px solid var(--clr-font-second);
     background-color: var(--clr-bcg);
     padding: 0.7rem;
+    @media only screen and (max-width: 700px) {
+      margin-top: 2rem;
+      grid-template-areas:
+        "value value value value value"
+        "date status priority active delete";
+      grid-template-rows: 50px 50px;
+      grid-template-columns: repeat(4, 1fr) 20px;
+      padding: 0.4rem 5%;
+    }
   }
 
   .task-value {
-    margin: 0;
     font-size: 1.05rem;
     font-weight: 600;
+    width: 100%;
+    margin-left: 1.5rem;
+    @media only screen and (max-width: 700px) {
+      grid-area: value;
+    }
+  }
+  .date {
+    @media only screen and (max-width: 700px) {
+      grid-area: date;
+    }
   }
 
   .option {
@@ -221,10 +267,18 @@ const Wrapper = styled.div`
       padding: 0.3rem;
       font-size: 0.55rem;
     }
+    @media only screen and (max-width: 700px) {
+      grid-area: status;
+    }
   }
 
   .priority {
     background-color: transparent;
+
+    @media only screen and (max-width: 700px) {
+      margin-right: 7px;
+      grid-area: priority;
+    }
   }
   .in-progress {
     background-color: #3b54e4;
@@ -253,6 +307,12 @@ const Wrapper = styled.div`
   svg {
     height: 20px;
     width: 20px;
+  }
+
+  .active-check {
+    @media only screen and (max-width: 700px) {
+      grid-area: active;
+    }
   }
 
   input[type="checkbox"].active-check {
@@ -306,6 +366,11 @@ const Wrapper = styled.div`
     right: 25px;
     :hover {
       color: var(--clr-secondary-2);
+    }
+    @media only screen and (max-width: 700px) {
+      grid-area: delete;
+      position: static;
+      margin-right: 5px;
     }
   }
 `;

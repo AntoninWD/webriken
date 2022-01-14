@@ -66,10 +66,10 @@ const AddTools: React.FC = () => {
             return (
               <div key={tool.id} className='tool'>
                 {tool.icon}
-                <div>
-                  <h5>{tool.text}</h5>
-                  <p>{tool.description}</p>
-                </div>
+
+                <h5>{tool.text}</h5>
+                <p>{tool.description}</p>
+
                 <button
                   className='add-btn'
                   onClick={() => {
@@ -86,9 +86,6 @@ const AddTools: React.FC = () => {
   );
 };
 const Wrapper = styled.div`
-  @media only screen and (max-width: 900px) {
-    display: none;
-  }
   h2 {
     margin-left: 10%;
     margin-top: 3rem;
@@ -130,6 +127,14 @@ const Wrapper = styled.div`
       font-size: 0.8rem;
       padding: 15px 3rem;
     }
+    @media only screen and (max-width: 700px) {
+      font-size: 0.8rem;
+      padding: 15px 1.5rem;
+    }
+    @media only screen and (max-width: 460px) {
+      font-size: 0.7rem;
+      padding: 15px 0.6rem;
+    }
     :hover {
       border-bottom: 2px solid var(--clr-primary-4);
       color: var(--clr-primary-4);
@@ -149,10 +154,22 @@ const Wrapper = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 3.5rem 2rem;
     justify-items: center;
+    @media only screen and (max-width: 700px) {
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 2.5rem 0;
+    }
+
+    @media only screen and (max-width: 420px) {
+      grid-template-columns: 1fr;
+      grid-gap: 1.5rem 0;
+    }
   }
   .tool {
     width: 170px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
   }
   svg {
     height: 40px;
@@ -176,23 +193,20 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     font: unset;
-    font-family: "Source Sans Pro", sans-serif;
     cursor: pointer;
-    background-color: transparent;
-    border: 2px solid var(--clr-primary-4);
-    padding: 5px;
+    padding: 5px 7px;
     border-radius: 5px;
-    color: var(--clr-primary-4);
-    font-weight: 600;
-    transition: var(--transition);
-    margin-left: 27px;
+    color: var(--clr-white);
+    border: none;
+    background: linear-gradient(
+      142deg,
+      rgba(238, 106, 5, 1) 0%,
+      rgba(245, 133, 5, 1) 91%
+    );
+    box-shadow: rgba(58, 58, 58, 0.246) 0px 5px 10px;
+    font-size: 1rem;
     @media screen and (max-width: 1400px) {
       font-size: 0.8rem;
-    }
-    :hover {
-      background-color: var(--clr-primary-4);
-      color: var(--clr-white);
-      border: 2px solid var(--clr-primary-4);
     }
   }
 `;

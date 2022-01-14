@@ -10,9 +10,6 @@ export const Messenger = () => {
   );
 };
 const Wrapper = styled.div`
-  @media only screen and (max-width: 900px) {
-    display: none;
-  }
   h2 {
     margin-left: 10%;
     margin-top: 3rem;
