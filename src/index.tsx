@@ -13,8 +13,7 @@ ReactDOM.render(
   <Auth0Provider
     domain={`${process.env.REACT_APP_AUTH_DOMAIN}`}
     clientId={`${process.env.REACT_APP_AUTH_CLIENT_ID}`}
-    // before updating to git, change this to https://webriken.netlify.app/
-    redirectUri={"https://webriken.netlify.app/"}>
+    redirectUri={`${window.location.href.split("app")[0]}app/home`}>
     <NotificationsContextProvider>
       <HomeContextProvider>
         <ThemeContextProvider>
