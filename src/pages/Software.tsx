@@ -7,7 +7,7 @@ interface Props {
 }
 const Software: React.FC<Props> = ({ component }) => {
   const [sideBarOpen, setSideBarOpen] = useState(false);
-
+  // mobile only
   const sideBarHandler = () => {
     setSideBarOpen(!sideBarOpen);
   };

@@ -1,36 +1,35 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { interfaceContext } from "../context/interface_context";
-import { addToolsContext } from "../context/tools_context";
-import { mainTools } from "../data/interfaceTools";
+
 import { FaTrophy, FaClipboardList, FaMusic, FaBookOpen } from "react-icons/fa";
 import { RiTimerFill } from "react-icons/ri";
 import { GoPin } from "react-icons/go";
 
 type Props = {
   sideBarHandler: () => void;
+  currentInterfaceHandler: (comp: string) => void;
+  currentSideBar: any[];
 };
 
-const SidebarTools: React.FC<Props> = ({ sideBarHandler }) => {
-  const { setMain, mainComponent } = useContext(interfaceContext);
-  const { tools } = useContext(addToolsContext);
-  const addToolsBtn = mainTools.slice(3, 4);
+const SidebarTools: React.FC<Props> = ({
+  sideBarHandler,
+  currentInterfaceHandler,
+  currentSideBar,
+}) => {
   return (
     <Wrapper>
-      {addToolsBtn.map(({ text, component, active }, i) => {
+      {currentSideBar.slice(3, 4).map(({ text, component, active }, i) => {
         return (
           <Link
             to={`/app/${component}`}
             key={i}
             className={`${
-              mainComponent === component || active
-                ? "btn-app active addToolBtn "
-                : "btn-app addToolBtn"
+              active ? "btn-app active addToolBtn " : "btn-app addToolBtn"
             }`}
             onClick={() => {
-              setMain(component);
               sideBarHandler();
+              currentInterfaceHandler(component);
             }}>
             {text}
           </Link>
@@ -38,7 +37,7 @@ const SidebarTools: React.FC<Props> = ({ sideBarHandler }) => {
       })}
       <hr className='bar' />
       <div className='tools'>
-        {tools.map(({ component, text }, i) => {
+        {currentSideBar.slice(4).map(({ component, text, active }, i) => {
           let logo;
           if (component === "posttips") {
             logo = <GoPin />;
@@ -63,12 +62,10 @@ const SidebarTools: React.FC<Props> = ({ sideBarHandler }) => {
             <Link
               to={`/app/${component}`}
               key={i}
-              className={`${
-                mainComponent === component ? "btn-app active" : "btn-app"
-              }`}
+              className={`${active ? "btn-app active" : "btn-app"}`}
               onClick={() => {
-                setMain(component);
                 sideBarHandler();
+                currentInterfaceHandler(component);
               }}>
               {logo}
               {text}
@@ -118,12 +115,13 @@ const Wrapper = styled.div`
     @media only screen and (max-width: 1350px) {
       margin: 0;
       margin-left: 15%;
-      margin-bottom: 0.7rem;
+      margin-bottom: 0.9rem;
       font-size: 0.8rem;
       padding: 5px 20px;
       margin-top: 0.3rem;
     }
     @media only screen and (max-width: 1150px) {
+      margin-bottom: 0.9rem;
       margin-left: auto;
       margin-right: auto;
       padding: 5px 15px;

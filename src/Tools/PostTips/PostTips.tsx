@@ -6,8 +6,6 @@ import { GiPin } from "react-icons/gi";
 import { FaTimes } from "react-icons/fa";
 import todoImg from "../../images/undraw_Taking_notes_re_bnaf.svg";
 import { addToolsContext } from "../../context/tools_context";
-import { interfaceContext } from "../../context/interface_context";
-
 import { mainTools } from "../../data/interfaceTools";
 import { Link } from "react-router-dom";
 
@@ -51,8 +49,8 @@ const PostTips: React.FC = () => {
   const [topicId, setTopicId] = useState(0);
   const [currentTopic, setCurrentTopic] = useState("");
   const sortRef = useRef<HTMLSelectElement>(null);
-  const { removeTool } = useContext(addToolsContext);
-  const { setMain } = useContext(interfaceContext);
+  const { removeTool, activeToolsHandler } = useContext(addToolsContext);
+
   const firstTopic = currentTopicList[0];
 
   useEffect(() => {
@@ -231,7 +229,7 @@ const PostTips: React.FC = () => {
         className='remove-tool'
         onClick={() => {
           removeTool("Post Tips");
-          setMain("home");
+          activeToolsHandler("posttips");
           mainTools[0].active = true;
         }}>
         Remove tool

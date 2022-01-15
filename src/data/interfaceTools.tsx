@@ -23,12 +23,14 @@ export const mainTools = [
     text: "Notifications",
     component: "notifications",
     icon: <FaBell />,
+    active: false,
   },
   {
     id: 3,
     text: "Messenger",
     component: "messenger",
     icon: <BsChatSquareDotsFill />,
+    active: false,
   },
 
   {
@@ -36,6 +38,7 @@ export const mainTools = [
     text: "ADD TOOLS",
     component: "addtools",
     icon: <GiStarShuriken />,
+    active: false,
   },
 ];
 
@@ -48,6 +51,7 @@ export const allTools = [
     type: "popular",
     description:
       "Organize your notes with post tips by subjects or importance.",
+    active: false,
   },
   {
     id: 6,
@@ -56,6 +60,7 @@ export const allTools = [
     icon: <FaClipboardList />,
     type: "popular",
     description: "Manage your to-do list with complex features.",
+    active: false,
   },
   {
     id: 7,
@@ -64,6 +69,7 @@ export const allTools = [
     icon: <FaMusic />,
     type: "coming soon",
     description: "Listen and focus on Spotify music directly on the app.",
+    active: false,
   },
   {
     id: 8,
@@ -72,6 +78,7 @@ export const allTools = [
     icon: <FaTrophy />,
     type: "coming soon",
     description: "This tool will help you accomplish your goals!",
+    active: false,
   },
   {
     id: 9,
@@ -80,6 +87,7 @@ export const allTools = [
     icon: <FaBookOpen />,
     type: "newest",
     description: "Don't miss any events with the agenda tools.",
+    active: false,
   },
   {
     id: 10,
@@ -88,5 +96,6 @@ export const allTools = [
     icon: <RiTimerFill />,
     type: "popular",
     description: "Become productive with the pomodoro timer technique!",
+    active: false,
   },
 ];

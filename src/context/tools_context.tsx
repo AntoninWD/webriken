@@ -7,12 +7,14 @@ type toolObj = {
   icon: JSX.Element;
   type: string;
   description: string;
+  active: boolean;
 };
 
 type mainContext = {
   tools: toolObj[];
   addTool: (obj: toolObj) => void;
   removeTool: (id: string) => void;
+  activeToolsHandler: (comp: string) => void;
 };
 
 const getLocalStorage = () => {
@@ -30,6 +32,7 @@ export const addToolsContext = React.createContext<mainContext>({
   tools: [],
   addTool: () => {},
   removeTool: () => {},
+  activeToolsHandler: () => {},
 });
 
 const AddToolsContextProvider: React.FC = ({ children }) => {
@@ -58,11 +61,25 @@ const AddToolsContextProvider: React.FC = ({ children }) => {
       return prevTool.filter((todo) => todo.text !== text);
     });
   };
+  const activeToolsHandler = (comp: string) => {
+    setTools((prevTool) => {
+      return prevTool.map((e) => {
+        if (comp === e.component) {
+          e.active = true;
+          return e;
+        } else {
+          e.active = false;
+          return e;
+        }
+      });
+    });
+  };
 
   const contextValue: mainContext = {
     tools: tools,
     addTool: addToolHandler,
     removeTool: removeToolHandler,
+    activeToolsHandler: activeToolsHandler,
   };
   return (
     <addToolsContext.Provider value={contextValue}>

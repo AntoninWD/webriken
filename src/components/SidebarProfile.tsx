@@ -1,16 +1,16 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Profile from "./Profile";
 import Setting from "./Setting";
 import { FaDoorOpen } from "react-icons/fa";
 import { GoGear } from "react-icons/go";
 import { Link } from "react-router-dom";
-import { interfaceContext } from "../context/interface_context";
-import { mainTools } from "../data/interfaceTools";
 import { useAuth0 } from "@auth0/auth0-react";
 
-const SidebarProfile: React.FC = () => {
-  const { setMain } = useContext(interfaceContext);
+type Props = {
+  currentInterfaceHandler: (comp: string) => void;
+};
+const SidebarProfile: React.FC<Props> = ({ currentInterfaceHandler }) => {
   const [status, setStatus] = useState("online");
   const [profileModal, setProfileModal] = useState(false);
   const [settingModal, setSettingModal] = useState(false);
@@ -52,8 +52,7 @@ const SidebarProfile: React.FC = () => {
           to='/'
           className='setting-btn'
           onClick={() => {
-            setMain("home");
-            mainTools[0].active = true;
+            currentInterfaceHandler("home");
           }}>
           <FaDoorOpen />
         </Link>

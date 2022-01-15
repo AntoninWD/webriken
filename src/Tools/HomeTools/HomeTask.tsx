@@ -2,11 +2,12 @@ import React, { useState, useContext, useEffect } from "react";
 import styled from "styled-components";
 import taskImg from "../../images/undraw_no_data_re_kwbl.svg";
 import { Link } from "react-router-dom";
-import { interfaceContext } from "../../context/interface_context";
 import { homeContext } from "../../context/home_context";
+import { addToolsContext } from "../../context/tools_context";
+import { mainTools } from "../../data/interfaceTools";
 const HomeTask: React.FC = () => {
-  const { setMain } = useContext(interfaceContext);
   const { todo } = useContext(homeContext);
+  const { activeToolsHandler } = useContext(addToolsContext);
   const [day, setDay] = useState("");
 
   useEffect(() => {
@@ -48,7 +49,13 @@ const HomeTask: React.FC = () => {
             return <ul key={i}>{e.taskValue}</ul>;
           })}
       </div>
-      <Link to='/app/todolist' onClick={() => setMain("todolist")}>
+      <Link
+        to='/app/todolist'
+        onClick={() => {
+          //remove the style on home link
+          mainTools[0].active = false;
+          activeToolsHandler("todolist");
+        }}>
         Manage Task
       </Link>
     </Wrapper>

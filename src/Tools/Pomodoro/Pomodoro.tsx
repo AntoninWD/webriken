@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { topToolsContext } from "../../context/topTools_context";
 import { Link } from "react-router-dom";
 import { mainTools } from "../../data/interfaceTools";
-import { interfaceContext } from "../../context/interface_context";
 import { addToolsContext } from "../../context/tools_context";
 let select: string[] = [];
 for (let i = 1; i <= 200; i++) {
@@ -21,8 +20,7 @@ const Pomodoro: React.FC = () => {
   const [work, setWork] = useState(0);
   const [pause, setPause] = useState(0);
 
-  const { removeTool } = useContext(addToolsContext);
-  const { setMain } = useContext(interfaceContext);
+  const { removeTool, activeToolsHandler } = useContext(addToolsContext);
 
   const handleResults = () => {
     if (workTime.current && pauseTime.current !== null) {
@@ -90,7 +88,7 @@ const Pomodoro: React.FC = () => {
         className='remove-tool'
         onClick={() => {
           removeTool("Pomodoro");
-          setMain("home");
+          activeToolsHandler("pomodoro");
           mainTools[0].active = true;
         }}>
         Remove tool

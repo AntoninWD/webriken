@@ -1,18 +1,56 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
 import styled from "styled-components";
 import SidebarTop from "./SidebarTop";
 import SidebarTools from "./SidebarTools";
 import SidebarProfile from "./SidebarProfile";
+import { mainTools } from "../data/interfaceTools";
+import { addToolsContext } from "../context/tools_context";
 type Props = {
   sideBarOpen: boolean;
   sideBarHandler: () => void;
 };
 const Sidebar: React.FC<Props> = ({ sideBarOpen, sideBarHandler }) => {
+  const { tools } = useContext(addToolsContext);
+  const sideBarMenu = [...mainTools, ...tools];
+  const [currentSideBar, setCurrentSideBar] = useState(sideBarMenu);
+  useEffect(() => {
+    const resetTools = tools.map((e) => {
+      e.active = false;
+      return e;
+    });
+    setCurrentSideBar([...mainTools, ...resetTools]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  useEffect(() => {
+    setCurrentSideBar([...mainTools, ...tools]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tools]);
+  const currentInterfaceHandler = (comp: string) => {
+    const newSidebar = currentSideBar.map((e) => {
+      if (comp === e.component) {
+        e.active = true;
+        return e;
+      } else {
+        e.active = false;
+        return e;
+      }
+    });
+    setCurrentSideBar(newSidebar);
+  };
   return (
     <Wrapper className={sideBarOpen ? "sidebar-open" : "sidebar-close"}>
-      <SidebarTop sideBarHandler={sideBarHandler} />
-      <SidebarTools sideBarHandler={sideBarHandler} />
-      <SidebarProfile />
+      <SidebarTop
+        sideBarHandler={sideBarHandler}
+        currentInterfaceHandler={currentInterfaceHandler}
+        currentSideBar={currentSideBar}
+      />
+      <SidebarTools
+        sideBarHandler={sideBarHandler}
+        currentInterfaceHandler={currentInterfaceHandler}
+        currentSideBar={currentSideBar}
+      />
+      <SidebarProfile currentInterfaceHandler={currentInterfaceHandler} />
     </Wrapper>
   );
 };

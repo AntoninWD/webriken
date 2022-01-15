@@ -2,7 +2,8 @@ import { Component } from "react";
 import styled from "styled-components";
 import { getCurrentDate } from "../../Utils/utility";
 import { Link } from "react-router-dom";
-import { interfaceContext } from "../../context/interface_context";
+import { addToolsContext } from "../../context/tools_context";
+import { mainTools } from "../../data/interfaceTools";
 type notificationsObj = {
   text: string;
   dueTime: string;
@@ -35,7 +36,9 @@ export default class NotificationItem extends Component<
                 <Link
                   to='/app/todolist'
                   onClick={() => {
-                    this.context.setMain("todolist");
+                    //remove the style on notifications link
+                    mainTools[1].active = false;
+                    this.context.activeToolsHandler("todolist");
                   }}>
                   Change Date
                 </Link>
@@ -46,5 +49,5 @@ export default class NotificationItem extends Component<
     </Wrapper>
   );
 }
-NotificationItem.contextType = interfaceContext;
+NotificationItem.contextType = addToolsContext;
 const Wrapper = styled.div``;

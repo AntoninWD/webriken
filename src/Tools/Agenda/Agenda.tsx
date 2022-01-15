@@ -2,13 +2,12 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { Construction } from "../../components";
 import { addToolsContext } from "../../context/tools_context";
-import { interfaceContext } from "../../context/interface_context";
 
 import { mainTools } from "../../data/interfaceTools";
 import { Link } from "react-router-dom";
 const Agenda: React.FC = () => {
-  const { removeTool } = useContext(addToolsContext);
-  const { setMain } = useContext(interfaceContext);
+  const { removeTool, activeToolsHandler } = useContext(addToolsContext);
+
   return (
     <Wrapper className='tools-wrapper'>
       <h1>Agenda component</h1>
@@ -18,7 +17,7 @@ const Agenda: React.FC = () => {
         className='remove-tool'
         onClick={() => {
           removeTool("Agenda");
-          setMain("home");
+          activeToolsHandler("agenda");
           mainTools[0].active = true;
         }}>
         Remove tool

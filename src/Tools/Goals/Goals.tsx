@@ -2,13 +2,12 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { Construction } from "../../components";
 import { addToolsContext } from "../../context/tools_context";
-import { interfaceContext } from "../../context/interface_context";
 
 import { mainTools } from "../../data/interfaceTools";
 import { Link } from "react-router-dom";
 const Goals: React.FC = () => {
-  const { removeTool } = useContext(addToolsContext);
-  const { setMain } = useContext(interfaceContext);
+  const { removeTool, activeToolsHandler } = useContext(addToolsContext);
+
   return (
     <Wrapper className='tools-wrapper'>
       <h1>Goals component</h1>
@@ -18,7 +17,7 @@ const Goals: React.FC = () => {
         className='remove-tool'
         onClick={() => {
           removeTool("Goals");
-          setMain("home");
+          activeToolsHandler("goals");
           mainTools[0].active = true;
         }}>
         Remove tool

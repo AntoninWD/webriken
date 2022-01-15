@@ -1,17 +1,21 @@
 import React, { useEffect, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { interfaceContext } from "../context/interface_context";
-import { mainTools } from "../data/interfaceTools";
 import logo from "../images/Logo1-01.png";
 import { notificationsContext } from "../context/notifications_context";
 import { getCurrentDate } from "../Utils/utility";
+
 type Props = {
   sideBarHandler: () => void;
+  currentInterfaceHandler: (comp: string) => void;
+  currentSideBar: any[];
 };
 
-const SidebarTop: React.FC<Props> = ({ sideBarHandler }) => {
-  const { setMain, mainComponent } = useContext(interfaceContext);
+const SidebarTop: React.FC<Props> = ({
+  sideBarHandler,
+  currentInterfaceHandler,
+  currentSideBar,
+}) => {
   const { notifications } = useContext(notificationsContext);
   const [notificationsCount, setNotificationsCount] = useState<number>(0);
 
@@ -22,51 +26,47 @@ const SidebarTop: React.FC<Props> = ({ sideBarHandler }) => {
       }).length
     );
   }, [notifications]);
-  const topTools = mainTools.slice(0, 3);
+
   return (
     <Wrapper>
       <div>
         <img src={logo} alt='Webriken' />
       </div>
-      {topTools.map(({ text, component, icon, active }, i) => {
-        if (text === "Notifications" && notificationsCount > 0) {
+      {currentSideBar
+        .slice(0, 3)
+        .map(({ text, component, icon, active }, i) => {
+          // Selecting notifications for count
+          if (text === "Notifications" && notificationsCount > 0) {
+            return (
+              <Link
+                key={i}
+                className={`${active ? "btn-app active" : "btn-app"}`}
+                to={`/app/${component}`}
+                onClick={() => {
+                  sideBarHandler();
+                  currentInterfaceHandler(component);
+                }}>
+                {icon}
+                {text}
+                <p className='count'> {notificationsCount}</p>
+              </Link>
+            );
+          }
+          //other btn...
           return (
             <Link
               key={i}
-              className={`${
-                mainComponent === component || active
-                  ? "btn-app active"
-                  : "btn-app"
-              }`}
+              className={`${active ? "btn-app active" : "btn-app"}`}
               to={`/app/${component}`}
               onClick={() => {
-                setMain(component);
+                currentInterfaceHandler(component);
                 sideBarHandler();
               }}>
               {icon}
               {text}
-              <p className='count'> {notificationsCount}</p>
             </Link>
           );
-        }
-        return (
-          <Link
-            key={i}
-            className={`${
-              mainComponent === component || active
-                ? "btn-app active"
-                : "btn-app"
-            }`}
-            to={`/app/${component}`}
-            onClick={() => {
-              setMain(component);
-              sideBarHandler();
-            }}>
-            {icon}
-            {text}
-          </Link>
-        );
-      })}
+        })}
 
       <hr className='bar' />
     </Wrapper>
@@ -94,8 +94,8 @@ const Wrapper = styled.div`
     color: white;
     background-color: var(--clr-busy);
     border-radius: 35px;
-    padding: 4px 10px;
-    font-size: 0.7rem;
+    padding: 2px 6px;
+    font-size: 0.6rem;
   }
 `;
 export default SidebarTop;

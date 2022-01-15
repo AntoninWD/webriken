@@ -2,13 +2,11 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { Construction } from "../../components";
 import { addToolsContext } from "../../context/tools_context";
-import { interfaceContext } from "../../context/interface_context";
-
 import { mainTools } from "../../data/interfaceTools";
 import { Link } from "react-router-dom";
 const Spotify: React.FC = () => {
-  const { removeTool } = useContext(addToolsContext);
-  const { setMain } = useContext(interfaceContext);
+  const { removeTool, activeToolsHandler } = useContext(addToolsContext);
+
   return (
     <Wrapper className='tools-wrapper'>
       <h1>Spotify component</h1>
@@ -18,7 +16,7 @@ const Spotify: React.FC = () => {
         className='remove-tool'
         onClick={() => {
           removeTool("Spotify");
-          setMain("home");
+          activeToolsHandler("spotify");
           mainTools[0].active = true;
         }}>
         Remove tool

@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { addToolsContext } from "../../context/tools_context";
 import Lists from "./Lists";
 import TopTodoList from "./TopTodoList";
-import { interfaceContext } from "../../context/interface_context";
 import { mainTools } from "../../data/interfaceTools";
 import { Link } from "react-router-dom";
 
@@ -38,8 +37,7 @@ const TodoList: React.FC = () => {
     getLocalStorage()
   );
   const showRef = useRef<HTMLSelectElement>(null);
-  const { removeTool } = useContext(addToolsContext);
-  const { setMain } = useContext(interfaceContext);
+  const { removeTool, activeToolsHandler } = useContext(addToolsContext);
 
   useEffect(() => {
     localStorage.setItem("todo-list", JSON.stringify(filteredTodoLists));
@@ -173,7 +171,7 @@ const TodoList: React.FC = () => {
         className='remove-tool'
         onClick={() => {
           removeTool("To-do List");
-          setMain("home");
+          activeToolsHandler("todolist");
           mainTools[0].active = true;
         }}>
         Remove tool
