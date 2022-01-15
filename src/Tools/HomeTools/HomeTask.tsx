@@ -52,6 +52,7 @@ const HomeTask: React.FC = () => {
       <Link
         to='/app/todolist'
         onClick={() => {
+          console.log(window.location.href);
           //remove the style on home link
           mainTools[0].active = false;
           activeToolsHandler("todolist");
