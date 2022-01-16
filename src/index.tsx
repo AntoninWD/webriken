@@ -13,7 +13,8 @@ ReactDOM.render(
   <Auth0Provider
     domain={`${process.env.REACT_APP_AUTH_DOMAIN}`}
     clientId={`${process.env.REACT_APP_AUTH_CLIENT_ID}`}
-    redirectUri={`${window.location.href.split("/app")[0]}/app/home`}>
+    // https://webriken.netlify.app/
+    redirectUri={`${window.location.href.split("/app")[0]}`}>
     <NotificationsContextProvider>
       <HomeContextProvider>
         <ThemeContextProvider>
