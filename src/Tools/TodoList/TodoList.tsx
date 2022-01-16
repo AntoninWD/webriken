@@ -181,6 +181,9 @@ const TodoList: React.FC = () => {
 };
 
 const Wrapper = styled.div`
+  @media only screen and (min-width: 1600px) {
+    padding: 0 10%;
+  }
   h1 {
     text-align: center;
   }
