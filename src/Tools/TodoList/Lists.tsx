@@ -35,7 +35,6 @@ const Lists: React.FC<Props> = ({
 }) => {
   const { taskHandler, currentTask } = useContext(topToolsContext);
   const { dueTodoHandler } = useContext(homeContext);
-
   const { setNotificationsHandler } = useContext(notificationsContext);
 
   useEffect(() => {

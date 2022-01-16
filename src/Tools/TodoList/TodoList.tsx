@@ -40,7 +40,7 @@ const TodoList: React.FC = () => {
   const { removeTool, activeToolsHandler } = useContext(addToolsContext);
 
   useEffect(() => {
-    localStorage.setItem("todo-list", JSON.stringify(filteredTodoLists));
+    localStorage.setItem("todo-list", JSON.stringify(todoLists));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filteredTodoLists]);
